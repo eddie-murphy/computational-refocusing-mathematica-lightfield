@@ -1,0 +1,2688 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    100427,       2680]
+NotebookOptionsPosition[     85495,       2411]
+NotebookOutlinePosition[     87836,       2479]
+CellTagsIndexPosition[     87576,       2466]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Edward Murphy
+Refocusing an Image\
+\>", "Title",
+ FontWeight->"Bold",
+ FontColor->GrayLevel[
+  0],ExpressionUUID->"c41a0158-a6db-45a4-ad7e-ff409a806883"],
+
+Cell[TextData[StyleBox["ATTENTION: Every time you use open this notebook, \
+evaluate the whole notebook first. Every time you run another notebook \
+(especially those with ClearAll[\"Global`*\"] ), rerun this entire notebook. \
+If you do not do this, intra-document links will not work. ",
+ FontSize->18,
+ FontWeight->"Bold",
+ FontColor->RGBColor[1, 0, 0]]], "Text",
+ CellDingbat->"\[HappySmiley]",
+ ShowCellTags->False,ExpressionUUID->"8153022d-8800-4488-8e6e-f3ae5e36052b"],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellLabel->
+  "In[467]:=",ExpressionUUID->"00e35e8f-f54e-41f6-a0a2-b654b711ef59"],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"SetOptions", "[", 
+   RowBox[{
+    RowBox[{"EvaluationNotebook", "[", "]"}], ",", 
+    RowBox[{"StyleDefinitions", "\[Rule]", 
+     RowBox[{"Notebook", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Cell", "[", 
+          RowBox[{"StyleData", "[", 
+           RowBox[{"StyleDefinitions", "\[Rule]", "\"\<Default.nb\>\""}], 
+           "]"}], "]"}], ",", 
+         RowBox[{"Cell", "[", 
+          RowBox[{
+           RowBox[{"StyleData", "[", "\"\<Notebook\>\"", "]"}], ",", 
+           RowBox[{"Background", "\[Rule]", 
+            RowBox[{"GrayLevel", "[", "0.99", "]"}]}]}], "]"}], ",", 
+         RowBox[{"Cell", "[", 
+          RowBox[{
+           RowBox[{"StyleData", "[", "\"\<Input\>\"", "]"}], ",", 
+           RowBox[{"Background", "\[Rule]", "LightYellow"}]}], "]"}], ",", 
+         RowBox[{"Cell", "[", 
+          RowBox[{
+           RowBox[{"StyleData", "[", "\"\<Output\>\"", "]"}], ",", 
+           RowBox[{"Background", "\[Rule]", "LightGreen"}]}], "]"}], ",", 
+         RowBox[{"Cell", "[", 
+          RowBox[{
+           RowBox[{"StyleData", "[", "\"\<Text\>\"", "]"}], ",", 
+           RowBox[{"Background", "\[Rule]", "LightBrown"}], ",", "16", ",", 
+           RowBox[{"LineSpacing", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", " ", "0"}], "}"}]}]}], "]"}], ",", 
+         RowBox[{"Cell", "[", 
+          RowBox[{
+           RowBox[{"StyleData", "[", "\"\<Chapter\>\"", "]"}], ",", 
+           RowBox[{"Background", "\[Rule]", 
+            RowBox[{"GrayLevel", "[", ".9", "]"}]}]}], "]"}]}], "}"}], ",", 
+       RowBox[{
+       "StyleDefinitions", "\[Rule]", 
+        "\"\<PrivateStylesheetFormatting.nb\>\""}]}], "]"}]}]}], "]"}],
+  FontColor->GrayLevel[0]]], "Input",
+ FontColor->GrayLevel[1],
+ CellLabel->
+  "In[468]:=",ExpressionUUID->"913b0586-1ad8-4114-a274-8ead38c715ed"],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<Table of Contents\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<toc\>\"", "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[469]:=",ExpressionUUID->"78dd2b36-2377-47fa-aa42-4f875c3fc08b"],
+
+Cell[CellGroupData[{
+
+Cell["Table of Contents", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"toc",ExpressionUUID->"eca8123e-78f9-41f2-a249-0ee8d6b16d3e"],
+
+Cell["\<\
+Click on any of the links below to jump to that section of the document. 
+The color scheme to this notebook is as follows: all text cells are a light \
+brown, all input cells are light yellow, and all output cells are green. 
+Some output cells are interactive. 
+If you see thin yellow horizontal bars going across the notebook, those are \
+hidden (as best as possible) cells that contain formatting code. To reveal \
+these cells, select the cells and go to: Cell\[Rule]Cell Properties\[Rule]Open\
+\>", "Text",ExpressionUUID->"58fdd030-01c4-4e91-8340-9e3c623f6290"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Framed", "[", 
+  RowBox[{
+   RowBox[{"Column", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Hyperlink", "[", 
+       RowBox[{"\"\<Table of Contents\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<toc\>\""}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Hyperlink", "[", 
+       RowBox[{"\"\<Introduction\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<intro\>\""}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Hyperlink", "[", 
+       RowBox[{"\"\<Imaging Equations\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<irr\>\""}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Hyperlink", "[", 
+       RowBox[{"\"\<Light Field Camera\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<cam\>\""}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Hyperlink", "[", 
+       RowBox[{"\"\<Digitally Refocus an Image\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<refocus\>\""}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Hyperlink", "[", 
+       RowBox[{"\"\<Refocusing Animations\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<ani\>\""}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Hyperlink", "[", 
+       RowBox[{"\"\<Refocusing Code\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<code\>\""}], 
+         "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"Hyperlink", "[", 
+       RowBox[{"\"\<References\>\"", ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"EvaluationNotebook", "[", "]"}], ",", "\"\<ref\>\""}], 
+         "}"}]}], "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "}"}], "]"}], ",", 
+   RowBox[{"RoundingRadius", "\[Rule]", "5"}]}], "]"}]], "Input",
+ CellLabel->
+  "In[470]:=",ExpressionUUID->"984afed9-b48a-469b-880c-1f9c4830e060"],
+
+Cell[BoxData[
+ FrameBox[
+  TagBox[GridBox[{
+     {
+      TemplateBox[{"\"Table of Contents\"",{
+         NotebookObject[
+          FrontEndObject[
+           LinkObject["s2y8s_shm", 3, 1]], 57], "toc"},ButtonData},
+       "HyperlinkDefault"]},
+     {
+      TemplateBox[{"\"Introduction\"",{
+         NotebookObject[
+          FrontEndObject[
+           LinkObject["s2y8s_shm", 3, 1]], 57], "intro"},ButtonData},
+       "HyperlinkDefault"]},
+     {
+      TemplateBox[{"\"Imaging Equations\"",{
+         NotebookObject[
+          FrontEndObject[
+           LinkObject["s2y8s_shm", 3, 1]], 57], "irr"},ButtonData},
+       "HyperlinkDefault"]},
+     {
+      TemplateBox[{"\"Light Field Camera\"",{
+         NotebookObject[
+          FrontEndObject[
+           LinkObject["s2y8s_shm", 3, 1]], 57], "cam"},ButtonData},
+       "HyperlinkDefault"]},
+     {
+      TemplateBox[{"\"Digitally Refocus an Image\"",{
+         NotebookObject[
+          FrontEndObject[
+           LinkObject["s2y8s_shm", 3, 1]], 57], "refocus"},ButtonData},
+       "HyperlinkDefault"]},
+     {
+      TemplateBox[{"\"Refocusing Animations\"",{
+         NotebookObject[
+          FrontEndObject[
+           LinkObject["s2y8s_shm", 3, 1]], 57], "ani"},ButtonData},
+       "HyperlinkDefault"]},
+     {
+      TemplateBox[{"\"Refocusing Code\"",{
+         NotebookObject[
+          FrontEndObject[
+           LinkObject["s2y8s_shm", 3, 1]], 57], "code"},ButtonData},
+       "HyperlinkDefault"]},
+     {
+      TemplateBox[{"\"References\"",{
+         NotebookObject[
+          FrontEndObject[
+           LinkObject["s2y8s_shm", 3, 1]], 57], "ref"},ButtonData},
+       "HyperlinkDefault"]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellLabel->
+  "Out[470]=",ExpressionUUID->"6a19bc2d-1a1a-49f0-94d4-ee4a2a4b80c9"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<Introduction\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<intro\>\"", "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[471]:=",ExpressionUUID->"71d09a8b-a78b-49af-9aef-15b85f84a254"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Introduction", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"intro",ExpressionUUID->"388b8d11-f45d-442e-b707-e93ea983a126"],
+
+Cell["\<\
+\tThis project introduces how to refocus an image after it has been taken. If \
+you want a sneak peak, skip to the Animations section. There are some useful \
+papers listed at the end of this notebook which cover certain topics in much \
+greater detail than this report. In addition, the work presented here would \
+not have been possible without the Stanford Light Field Archive. 
+\tIf for some reason the files referenced in this notebook do not load within \
+Mathematica, they are located in the folder that this notebook came in. \
+\>", "Text",ExpressionUUID->"241f9c29-4036-4fcd-8d61-e586f52d947d"],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<Light Field\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<light\>\"", "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[472]:=",ExpressionUUID->"1cd44901-989f-45ea-960a-88f1c4b34899"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Light Field", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"light",ExpressionUUID->"5ac7b368-9faa-4685-be68-05d346f11b0a"],
+
+Cell[TextData[{
+ "\tLight rays can be described by the plenoptic function created by Adelson \
+and ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["Bergen", "1"], "."}], TraditionalForm]],ExpressionUUID->
+  "34b8f830-dc67-45f1-8ab3-3646f10264e9"],
+ " It is a 7 dimensional function given by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", "(", 
+    RowBox[{
+    "x", ",", "y", ",", "z", ",", "\[Theta]", ",", "\[Phi]", ",", "t", ",", 
+     "\[Lambda]"}], ")"}], TraditionalForm]],ExpressionUUID->
+  "924c62b9-ae5d-4dfe-a489-90cc20de976e"],
+ ", where ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"x", ",", "y", ",", 
+    RowBox[{"and", " ", "z"}]}], TraditionalForm]],ExpressionUUID->
+  "f871fa4f-2361-4036-8d44-7cdfa09cc2e5"],
+ " represent the spatial location of a point on the ray, \[Theta] and \[Phi] \
+represent angular directions of the ray at the point ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"x", ",", "y", ",", "z"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"560cd231-993a-45fa-ac59-0b9bac4df207"],
+ ",  ",
+ Cell[BoxData[
+  FormBox["t", TraditionalForm]],ExpressionUUID->
+  "534395fb-5ad3-47ae-8afb-dc7ac9e1a9e8"],
+ " is time, and ",
+ Cell[BoxData[
+  FormBox["\[Lambda]", TraditionalForm]],ExpressionUUID->
+  "a329efd2-2ab2-430f-b59b-c1e633afd41b"],
+ " is wavelength. The function is often reduced by assuming it is not \
+changing with time (no more ",
+ StyleBox["t",
+  FontSlant->"Italic"],
+ "), light is constant along its path (lose one of the spatial coordinates \
+and in this case ",
+ StyleBox["z",
+  FontSlant->"Italic"],
+ "), and the light is monochromatic (no more \[Lambda]). This leaves the \
+function as ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", "(", 
+    RowBox[{"\[Theta]", ",", "\[Phi]", ",", "x", ",", "y"}], ")"}], 
+   TraditionalForm]],ExpressionUUID->"8074357b-c874-47fa-ac87-7b2c04f210f2"],
+ ". Further, it is then useful to parametrize the plenoptic function using \
+two ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["planes", "2"], TraditionalForm]],ExpressionUUID->
+  "a13f7bdd-6612-46e6-b7d4-64e2cb7caa63"],
+ ".  Referring to figure 1 (interactive button), by considering the ray\
+\[CloseCurlyQuote]s intersection point on each of the two planes, the angular \
+and spatial information of the ray is captured. Light propagates left to \
+right in figure 1. In a light field camera setup, the first plane is  thought \
+of as the lens plane, and the second plane is thought of as the sensor plane. "
+}], "Text",ExpressionUUID->"2d7f5e84-2c6b-4c31-ad71-35390c92e892"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Figure 1\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"fig1", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+           "\"\<fig1.png\>\""}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Figure 1\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "fig1", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "fig1", "]"}]}], "Input",
+ CellLabel->
+  "In[473]:=",ExpressionUUID->"c5b09fcc-30e6-4a15-b4af-fcbcfd710869"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Figure 1\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`fig1 = Import[
+          StringJoin[
+           NotebookDirectory[], "fig1.png"], ImageSize -> Large], {
+        "Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Figure 1\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`fig1]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{"View Figure 1" :> Expression[$CellContext`fig1 = Import[
+        StringJoin[
+         NotebookDirectory[], "fig1.png"], ImageSize -> Large], {"Pages", 1}],
+     "Close Figure 1" :> Expression[
+      Clear[$CellContext`fig1]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[473]=",ExpressionUUID->"8ddf0e51-069d-48db-b5a4-5581656ebcc8"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`fig1, StandardForm],
+  ImageSizeCache->{31., {3., 10.}}]], "Output",
+ CellLabel->
+  "Out[474]=",ExpressionUUID->"dc76e2b4-fb31-4b82-a025-55a417ed910c"]
+}, Open  ]],
+
+Cell[TextData[{
+ "\tIn this two-plane parametrization seen in figure 1, the angular \
+coordinates \[Theta] and \[Phi] are generally replaced with the spatial \
+Cartesian coordinates ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"u", " ", "and", " ", "v"}], ","}], TraditionalForm]],
+  ExpressionUUID->"b78fda92-500d-40cd-8e7a-6752e57cb821"],
+ " giving a final function represented by ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"P", "(", 
+    RowBox[{"x", ",", "y", ",", "u", ",", "v"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"91ef16ba-9073-4e71-a45a-9c0a85460862"],
+ ". This simplified function is referred to as the light field and its \
+notation is changed to: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", "(", 
+    RowBox[{"x", ",", "y", ",", "u", ",", "v"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"12e71dd1-40f6-41b1-88af-2b77af20c673"],
+ ".  Perhaps this is a bad name, because it  is more of a ray than a field. \
+The value of ",
+ Cell[BoxData[
+  FormBox["L", TraditionalForm]],ExpressionUUID->
+  "9d8ddd7e-8d31-4ccd-8efb-7e4364965380"],
+ " is ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["radiance", "3"], TraditionalForm]],ExpressionUUID->
+  "9739f3cb-8da4-4f32-b78f-06f12df92dd4"],
+ ", or the amount of light. In addition, a regular camera does not capture a \
+light field because it does not capture the angular information of rays. \
+However, as discussed later, using a lens array in front of the image sensor \
+or even having a large number of sensors in a grid, captures angular \
+information. "
+}], "Text",ExpressionUUID->"d4d485c7-c67b-4f5d-b4f4-8c3126ea846d"],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<Imaging Equations\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<irr\>\"", "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[475]:=",ExpressionUUID->"198716c2-8ed4-4798-b37d-92dcd1fb260b"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Imaging Equations", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"irr",ExpressionUUID->"0368fb99-1613-4a07-9d27-64156fcd8722"],
+
+Cell[TextData[{
+ "\tReferring to figure 2, an image captured by an image sensor is \
+proportional to the irradiance at the sensor plane. The irradiance at a point \
+(x,y) on the sensor plane is given ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["by", "4"], TraditionalForm]],ExpressionUUID->
+  "05d06e72-915e-4da1-9faf-bb6cdc1d15e2"],
+ ":\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"I", "(", 
+     RowBox[{"x", ",", "y"}], ")"}], "=", 
+    RowBox[{
+     FractionBox["1", 
+      SuperscriptBox["F", "2"]], 
+     RowBox[{"\[Integral]", 
+      RowBox[{"\[Integral]", 
+       RowBox[{
+        RowBox[{
+         SubscriptBox["L", "f"], "(", 
+         RowBox[{"x", ",", "y", ",", "u", ",", "v"}], ")"}], 
+        RowBox[{
+         SuperscriptBox["cos", "4"], "(", "\[Theta]", ")"}], 
+        RowBox[{"\[DifferentialD]", "u"}], 
+        RowBox[{"\[DifferentialD]", "v"}]}]}]}]}]}], TraditionalForm]],
+  FontSize->24,ExpressionUUID->"7befe146-57b4-4257-b405-959f0b9dae82"],
+ "\n\twhere F is the distance between the exit pupil of the lens and the \
+film, ",
+ Cell[BoxData[
+  FormBox[
+   SubscriptBox["L", "f"], TraditionalForm]],ExpressionUUID->
+  "46407e77-8c42-4c72-8550-ae192349ac9e"],
+ " is the light field parameterized by the lens and sensor plane at a \
+separation distance of F, and \[Theta] is the angle of incidence to the \
+planes' normals (which are assumed to have the same direction). The ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["cos", "4"], "(", "\[Theta]", ")"}], TraditionalForm]],
+  ExpressionUUID->"dafe84a3-ede6-4658-9d23-7abdf1232ef1"],
+ " represents the fact that light entering at a large \[Theta] contributes \
+less to the irradiance measured. Notice how the irradiance at a point (x,y) \
+on the sensor plane is found by integrating all the light fields coming to \
+the point (x,y) from the lens plane.  To simplify the irradiance equation it \
+is assumed that the planes are infinite and that the value of ",
+ StyleBox["L",
+  FontSlant->"Italic"],
+ " is zero beyond the bounds of the physical system being modeled. Also, the ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["cos", "4"], "(", "\[Theta]", ")"}], " "}], 
+   TraditionalForm]],ExpressionUUID->"fa4e016d-25c7-4c78-bf97-8e6f8876a876"],
+ "is absorbed into the light field ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    SuperscriptBox["definition", "5"], ".", " "}], TraditionalForm]],
+  ExpressionUUID->"bd9d86b5-56c6-4326-a1e5-007ef09b3442"],
+ " \n\tFor simplicity in illustrating the following concept, in the following \
+figures and accompanying discussion we restrict ourselves to one of the \
+dimensions of each of the parametric planes (in this case we restrict \
+ourselves to u and x). As a side note, located in the referenced documents \
+are nice discussions on ray-space diagrams (not shown in this notebook), \
+which help visualize light fields. \n\tFocusing at different depths in a real \
+camera consists of altering the distance between the lens and the sensor \
+plane. This is demonstrated in figure 2 with the two-plane parametrization. "
+}], "Text",ExpressionUUID->"8a6e51a6-657e-4611-b120-daba6b3f501b"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Figure 2\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"fig2", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+           "\"\<fig2.png\>\""}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Figure 2\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "fig2", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "fig2", "]"}]}], "Input",
+ CellLabel->
+  "In[476]:=",ExpressionUUID->"17f27d4d-dec2-413f-ab66-9b373482f8d6"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Figure 2\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`fig2 = Import[
+          StringJoin[
+           NotebookDirectory[], "fig2.png"], ImageSize -> Large], {
+        "Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Figure 2\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`fig2]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{"View Figure 2" :> Expression[$CellContext`fig2 = Import[
+        StringJoin[
+         NotebookDirectory[], "fig2.png"], ImageSize -> Large], {"Pages", 1}],
+     "Close Figure 2" :> Expression[
+      Clear[$CellContext`fig2]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[476]=",ExpressionUUID->"797344f4-d08f-400d-9121-930d3325f987"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`fig2, StandardForm],
+  ImageSizeCache->{31., {3., 10.}}]], "Output",
+ CellLabel->
+  "Out[477]=",ExpressionUUID->"b9aa24bd-0a39-4e30-960d-d487bd526027"]
+}, Open  ]],
+
+Cell[TextData[{
+ "\tFigure 2 only depicts one dimension in each of the planes for simplicity \
+in illustrating the concept (so the ",
+ StyleBox["u",
+  FontSlant->"Italic"],
+ " dimension for the lens plane and the ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " dimension for the sensor plane). Both these dimensions operate along the \
+vertical axis of the picture, as shown by how the axes\[CloseCurlyQuote] \
+values increase upwards in the picture. In figure 2, the sensor plane has \
+been moved to the left. The dots indicate points on an axis and the text next \
+to them indicate the coordinate value. The bidirectional arrows indicate \
+distances. Originally, the sensor plane was a distance ",
+ Cell[BoxData[
+  FormBox["F", TraditionalForm]],ExpressionUUID->
+  "7498ca14-6623-4417-a38c-1c2ac28825a9"],
+ " away from the lens plane. It then moved to a distance ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"F", "'"}], TraditionalForm]],ExpressionUUID->
+  "6119de34-71d2-4dcc-9e1a-34b5f1f0e9a1"],
+ " away from the lens plane. Prime (or an apostrophe) does not indicate a \
+derivative anywhere in this notebook. It is purely to distinguish values. \n\t\
+In this scenario, the picture was taken at a distance of ",
+ StyleBox["F,",
+  FontSlant->"Italic"],
+ " and it is desired that the image be refocused at a distance of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"F", "'"}], TraditionalForm]],ExpressionUUID->
+  "158a92ec-5202-4d81-b735-e5470a4e897a"],
+ ", without having to actually retake the picture at a distance of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"F", "'"}], TraditionalForm]],ExpressionUUID->
+  "681b0a49-7e67-4332-b94c-9a8629df7543"],
+ StyleBox[". ",
+  FontSlant->"Italic"],
+ "Thus, the light field at a distance ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"F", "'"}], TraditionalForm]],ExpressionUUID->
+  "fca48ffa-ac6d-466f-b1df-ca522e79441f"],
+ " needs to be expressed in terms of the light field at ",
+ Cell[BoxData[
+  FormBox["F", TraditionalForm]],ExpressionUUID->
+  "91c164a9-b433-4e5e-aeac-fec2b55ba2e7"],
+ ". Ultimately, in order to do this, the values of  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"x", "'"}], " ", "and", " ", 
+    RowBox[{"y", "'"}]}], TraditionalForm]],ExpressionUUID->
+  "ecfd5f3d-bbbf-4e93-919e-f6a0e238c6d5"],
+ " need to be known, which can be found by ray tracing the ray that \
+intersects the point (u,v) and (x,y). However, as is shown later, ray tracing \
+is not necessary. \n\tThe light field at ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"F", "'"}], TraditionalForm]],ExpressionUUID->
+  "bd61390a-c6b7-4564-9200-339dbf34b288"],
+ " is given by: ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"L", "'"}], 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"x", "'"}], ",", 
+      RowBox[{"y", "'"}], ",", "u", ",", "v"}], ")"}]}], TraditionalForm]],
+  ExpressionUUID->"0bb7a32d-484a-42b9-aa7c-89f359178a53"],
+ ". This needs to be expressed in terms of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", "(", 
+    RowBox[{"x", ",", "y", ",", "u", ",", "v"}], ")"}], TraditionalForm]],
+  ExpressionUUID->"a6982d05-0af4-4abd-928b-ee745a4496f2"],
+ ". Looking at figure 2, the ray intersects the sensor plane at a value of  \
+",
+ Cell[BoxData[
+  FormBox[
+   StyleBox[
+    RowBox[{"x", "=", 
+     RowBox[{"u", "+", 
+      FractionBox[
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"x", "'"}], "-", "u"}], ")"}], "\[Alpha]"]}]}],
+    FontSize->18], TraditionalForm]],ExpressionUUID->
+  "6b785fa5-7d24-4c55-bc3b-d7032ef6131a"],
+ " where",
+ StyleBox[" ",
+  FontSize->18],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Alpha]", "=", 
+    FractionBox[
+     RowBox[{"F", "'"}], "F"]}], TraditionalForm]],
+  FontSize->18,ExpressionUUID->"1c99fc90-b4ec-4a75-8757-632d7f6d6e3c"],
+ ". Similarly for the ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"y", " ", "and", " ", 
+    RowBox[{"v", "'"}]}], TraditionalForm]],ExpressionUUID->
+  "8048fba9-dd97-4a50-9dc8-e90022c43581"],
+ " dimension, the ray intersects the sensor at a value of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"y", "=", 
+    RowBox[{"v", "+", 
+     FractionBox[
+      RowBox[{
+       RowBox[{"y", "'"}], "-", "u"}], "\[Alpha]"]}]}], TraditionalForm]],
+  FontSize->18,ExpressionUUID->"61bc0559-c3c2-4111-9341-4c745c851a8d"],
+ ". Thus the light field at ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"F", "'"}], " "}], TraditionalForm]],ExpressionUUID->
+  "cba44f10-551b-475b-9dfb-6d01dd4c42bf"],
+ "is  given  by: \n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"L", "'"}], 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"x", "'"}], ",", 
+       RowBox[{"y", "'"}], ",", "u", ",", "v"}], ")"}]}], "=", "L"}], 
+   TraditionalForm]],
+  FontSize->18,
+  FontWeight->"Plain",ExpressionUUID->
+  "c55a6edd-8308-4c4a-8968-0b3054353450"],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{"u", "+", 
+     FractionBox[
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"x", "'"}], "-", "u"}], ")"}], "\[Alpha]"]}]}], 
+   TraditionalForm]],
+  FontSize->18,
+  FontWeight->"Plain",ExpressionUUID->
+  "8ca1d6f5-ddce-48b6-8e3c-ee3c42985349"],
+ StyleBox[",",
+  FontSize->18],
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"  ", 
+    RowBox[{
+     RowBox[{"v", "+", 
+      FractionBox[
+       RowBox[{
+        RowBox[{"y", "'"}], "-", "u"}], "\[Alpha]"]}], 
+     StyleBox[",",
+      FontSize->14], 
+     StyleBox[" ",
+      FontSize->14], 
+     StyleBox["u",
+      FontSize->14], 
+     StyleBox[" ",
+      FontSize->14], 
+     StyleBox[",",
+      FontSize->14], 
+     StyleBox["  ",
+      FontSize->14], 
+     StyleBox["v",
+      FontSize->14]}], 
+    StyleBox[")",
+     FontSize->14]}], TraditionalForm]],
+  FontSize->18,
+  FontWeight->"Plain",ExpressionUUID->
+  "1fcb0b28-ba34-4176-bf3f-2f8b8fa8fd6a"],
+ "\n",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    StyleBox["=",
+     FontSize->14], 
+    RowBox[{
+     StyleBox["L",
+      FontSize->24], 
+     RowBox[{
+      StyleBox["(",
+       FontSize->24], 
+      RowBox[{
+       RowBox[{
+        StyleBox[
+         RowBox[{
+          StyleBox["u",
+           FontSize->14], 
+          StyleBox[" ",
+           FontSize->14], 
+          RowBox[{
+           StyleBox["(",
+            FontSize->14], 
+           RowBox[{
+            StyleBox["1",
+             FontSize->14], 
+            StyleBox["-",
+             FontSize->14], 
+            StyleBox[
+             FractionBox[
+              StyleBox["1",
+               FontSize->14], "\[Alpha]"],
+             FontSize->24]}], 
+           StyleBox[")",
+            FontSize->14]}]}],
+         FontWeight->"Bold"], 
+        StyleBox["+",
+         FontSize->14], 
+        StyleBox[
+         FractionBox[
+          RowBox[{"x", "'"}], "\[Alpha]"],
+         FontSize->24]}], 
+       StyleBox["   ",
+        FontSize->24], 
+       StyleBox[",",
+        FontSize->24], 
+       StyleBox[" ",
+        FontSize->24], 
+       StyleBox[
+        RowBox[{
+         RowBox[{"v", " ", 
+          RowBox[{"(", 
+           RowBox[{"1", "-", 
+            FractionBox["1", "\[Alpha]"]}], ")"}]}], "+", 
+         FractionBox[
+          RowBox[{"y", "'"}], "\[Alpha]"]}],
+        FontSize->24], 
+       StyleBox["  ",
+        FontSize->24], 
+       StyleBox[",",
+        FontSize->24], 
+       StyleBox["  ",
+        FontSize->24], 
+       StyleBox["u",
+        FontSize->24], 
+       StyleBox[" ",
+        FontSize->24], 
+       StyleBox[",",
+        FontSize->24], 
+       StyleBox["v",
+        FontSize->24]}], 
+      StyleBox[")",
+       FontSize->24]}]}]}], TraditionalForm]],ExpressionUUID->
+  "911aa38f-f9e4-4aa6-82e5-ec39dd502539"],
+ "\n\twhere ",
+ StyleBox["x",
+  FontSlant->"Italic"],
+ " and ",
+ StyleBox["y",
+  FontSlant->"Italic"],
+ " have been replaced by the values found ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"earlier", 
+    SuperscriptBox[".", "6"], " "}], TraditionalForm]],ExpressionUUID->
+  "f8fd5387-b3f4-485c-9d53-f049962c131f"],
+ "(Although I must admit I don\[CloseCurlyQuote]t completely understand that \
+equality. The two (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"L", "'"}], "=", "L"}], TraditionalForm]],ExpressionUUID->
+  "ea7e27bf-20ec-4053-bfd9-d6bdeb744438"],
+ ") might be equal because in the beginning it was assumed that light is \
+constant along its path). Now this ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"L", "'"}], TraditionalForm]],ExpressionUUID->
+  "9115c5dd-9efc-4838-a4b2-b0184fc13a48"],
+ " is  used to calculate the irradiance ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"I", "(", 
+    RowBox[{
+     RowBox[{"x", "'"}], ",", 
+     RowBox[{"y", "'"}]}], ")"}], TraditionalForm]],ExpressionUUID->
+  "d805f03b-5ded-46ad-8049-9a7566bd507f"],
+ " of pixel value ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"x", "'"}], ",", 
+     RowBox[{"y", "'"}]}], ")"}], TraditionalForm]],ExpressionUUID->
+  "bf24db68-d412-4631-9f72-2306a80c9adb"],
+ " when the sensor is at a depth of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"F", "'"}], TraditionalForm]],ExpressionUUID->
+  "bb375dd4-47d6-4797-91e6-0346a4042d24"],
+ " and this is given by:\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"I", "(", 
+     RowBox[{
+      RowBox[{"x", "'"}], ",", 
+      RowBox[{"y", "'"}]}], ")"}], "=", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{
+       SuperscriptBox["\[Alpha]", "2"], 
+       SuperscriptBox["F", "2"]}]], 
+     RowBox[{"\[Integral]", 
+      RowBox[{"\[Integral]", 
+       RowBox[{
+        RowBox[{"L", "(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"u", "(", 
+            RowBox[{"1", "-", 
+             FractionBox["1", "\[Alpha]"]}], ")"}], "+", 
+           FractionBox[
+            RowBox[{"x", "'"}], "\[Alpha]"]}], ",", 
+          RowBox[{
+           RowBox[{"v", "(", 
+            RowBox[{"1", "-", 
+             FractionBox["1", "\[Alpha]"]}], ")"}], "+", 
+           FractionBox[
+            RowBox[{"y", "'"}], "\[Alpha]"]}], ",", "u", ",", "v"}], ")"}], 
+        RowBox[{"\[DifferentialD]", "u"}], 
+        RowBox[{"\[DifferentialD]", "v"}]}]}]}]}]}], TraditionalForm]],
+  FontSize->24,ExpressionUUID->"b1e8aea2-b0f9-4ae9-a3d3-8139127dd17e"],
+ "\n\tIn order to proceed with this equation, a knowledge of what a light \
+field camera is and what it captures is necessary. "
+}], "Text",ExpressionUUID->"f8e3aca6-22b5-485c-96b1-31c319850d8d"],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<Light Field Camera\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<cam\>\"", "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[478]:=",ExpressionUUID->"30c422de-379f-47cb-8657-47dcb0529b31"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Light Field Camera", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"cam",ExpressionUUID->"dcd05d21-2bbe-49fa-a47e-577b6e68aed3"],
+
+Cell["\<\
+\tAn question still unanswered in this report is, what is a light field \
+camera? A light field camera system is depicted in figure 3. Recall that \
+angular information of the light rays is necessary in order to capture a \
+light field. The red lights in the figure show how the lenslet (mircolens) \
+array separates rays from different directions, preserving angular \
+information. The Lenslet array in the figure is placed a certain distance \
+(calculated using the lens equation) away from the main lens,  so that the \
+light converges on it, causing the light to diverge to the right of it. \
+\>", "Text",ExpressionUUID->"95b8f103-68e3-4bdf-913a-59276794e29d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Figure 3\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"fig3", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+           "\"\<fig3.png\>\""}], ",", 
+          RowBox[{"ImageSize", "\[Rule]", "Large"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Figure 3\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "fig3", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "fig3", "]"}]}], "Input",
+ CellLabel->
+  "In[479]:=",ExpressionUUID->"a213e73e-50d6-4d0b-b4f6-701b452e1664"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Figure 3\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`fig3 = Import[
+          StringJoin[
+           NotebookDirectory[], "fig3.png"], ImageSize -> Large], {
+        "Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Figure 3\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`fig3]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{"View Figure 3" :> Expression[$CellContext`fig3 = Import[
+        StringJoin[
+         NotebookDirectory[], "fig3.png"], ImageSize -> Large], {"Pages", 1}],
+     "Close Figure 3" :> Expression[
+      Clear[$CellContext`fig3]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[479]=",ExpressionUUID->"c283b989-601c-4306-81be-642022d1fb8e"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`fig3, StandardForm],
+  ImageSizeCache->{31., {3., 10.}}]], "Output",
+ CellLabel->
+  "Out[480]=",ExpressionUUID->"1fb75046-7473-4929-ad97-aca3726d3960"]
+}, Open  ]],
+
+Cell[TextData[{
+ "\tOf interest are the sub-aperture images. These images are the pictures of \
+the scene from the different points (u,v) on the main lens (the aperture), \
+which means they each have a slightly different view of the ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["scene", "7"], TraditionalForm]],ExpressionUUID->
+  "1db52ba7-d4b3-4297-b11a-9e16fb85902b"],
+ ".  \n\tAn alternative method for capturing light field information is to \
+have a large array of cameras (like that which took the pictures for the \
+Stanford Light Field Archive Database). Each image captured by each camera \
+can be thought of as a sub-aperture image. "
+}], "Text",ExpressionUUID->"3d43180a-d36d-4c2e-ade0-7b649308ceb0"],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<Digitally Refocusing an Image\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<refocus\>\"", "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[481]:=",ExpressionUUID->"de5c1789-7305-4850-8b92-17184632b627"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Digitally Refocusing an Image", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"refocus",ExpressionUUID->"14312faf-a03b-4275-855c-4cc214230bb2"],
+
+Cell[TextData[{
+ "Recall that the irradiance ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"I", "(", 
+    RowBox[{
+     RowBox[{"x", "'"}], ",", 
+     RowBox[{"y", "'"}]}], ")"}], TraditionalForm]],ExpressionUUID->
+  "a8e18edf-0d90-4086-b460-b2dc6874956c"],
+ " of pixel value ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"x", "'"}], ",", 
+     RowBox[{"y", "'"}]}], ")"}], TraditionalForm]],ExpressionUUID->
+  "f7b162a6-6acc-4ee2-8a9c-ef4e5ed91593"],
+ " when the sensor is at a depth of ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"F", "'"}], TraditionalForm]],ExpressionUUID->
+  "52cd4e4c-0555-4af9-aa7d-0703760b6174"],
+ " is given by:\n\t",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{"I", "(", 
+     RowBox[{
+      RowBox[{"x", "'"}], ",", 
+      RowBox[{"y", "'"}]}], ")"}], "=", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{
+       SuperscriptBox["\[Alpha]", "2"], 
+       SuperscriptBox["F", "2"]}]], 
+     RowBox[{"\[Integral]", 
+      RowBox[{"\[Integral]", 
+       RowBox[{
+        RowBox[{"L", "(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"u", "(", 
+            RowBox[{"1", "-", 
+             FractionBox["1", "\[Alpha]"]}], ")"}], "+", 
+           FractionBox[
+            RowBox[{"x", "'"}], "\[Alpha]"]}], ",", 
+          RowBox[{
+           RowBox[{"v", "(", 
+            RowBox[{"1", "-", 
+             FractionBox["1", "\[Alpha]"]}], ")"}], "+", 
+           FractionBox[
+            RowBox[{"y", "'"}], "\[Alpha]"]}], ",", "u", ",", "v"}], ")"}], 
+        RowBox[{"\[DifferentialD]", "u"}], 
+        RowBox[{"\[DifferentialD]", "v"}]}]}]}]}]}], TraditionalForm]],
+  FontSize->24,ExpressionUUID->"7b21fe41-dabd-4e98-8b04-616062634035"],
+ "\nThis equation tells us that \[OpenCurlyDoubleQuote]is conceptually a \
+summation of dilated and shifted versions of the sub-aperture images over the \
+entire uv aperture\[CloseCurlyDoubleQuote]",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["", "8"], TraditionalForm]],ExpressionUUID->
+  "b1845077-45b6-482e-839c-c3f04c3a7513"],
+ ".  The images are scaled by a factor of \[Alpha] and translated by a factor \
+of  ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     RowBox[{"u", 
+      RowBox[{"(", 
+       RowBox[{"1", " ", "-", " ", 
+        RowBox[{"1", "/", "\[Alpha]"}]}], ")"}]}], " ", "+", " ", 
+     RowBox[{
+      RowBox[{"x", "'"}], "/", "\[Alpha]"}]}], ",", " ", 
+    RowBox[{"v", " ", 
+     RowBox[{
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", " ", "-", " ", 
+         RowBox[{"1", "/", "\[Alpha]"}]}], ")"}], "9"], ".", " "}]}]}], 
+   TraditionalForm]],ExpressionUUID->"291c4d2b-702c-4531-a4c0-3ba8bf86cef7"]
+}], "Text",ExpressionUUID->"934860e2-4e62-449f-93f4-3ec78cf66252"],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<Refocusing Animations\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<ani\>\"", "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[482]:=",ExpressionUUID->"e8105b55-c72d-4bab-bb47-6d8f70ef6b2c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Refocusing Animations", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"ani",ExpressionUUID->"42956f9a-6b1e-4f1d-a4c1-6be99dc64270"],
+
+Cell["\<\
+\tIn order to implement digital refocusing, I used Mathematica to translate \
+the sub-aperture images that I got from the Stanford database ( I did not \
+explore scaling the images). Images were translated in both the x and y \
+directions by an arbitrary number multiplied by there distance away from the \
+center image in both the x and y directions. The arbitrary number specified \
+the refocus depth. The code ensures that objects are always brought \
+translated the center. The code is in the next section. 
+\tBelow I have created animations showing a changing focus for four different \
+scenes.  Most of the color blurriness, and some of the pixelated-ness, is due \
+to the conversion to a small enough gif animation (they are still around 10 \
+MB though). If you wish to control the animation, click pause, and then move \
+the slider circle. Click close animation when you are done with it as that \
+will keep the memory in use down. 
+\tBelow each animation is an image taken by one of the cameras in the array. 
+\tIf for some reason these animations do not load within Mathematica, they \
+are located in the folder that this notebook came in. \
+\>", "Text",ExpressionUUID->"10fec482-5819-40f8-83d0-5c91ae17c658"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Card Animation\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"doc1", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+           "\"\<Cards.gif\>\""}], ",", "\"\<Animation\>\""}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Card Animation\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "doc1", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "doc1", "]"}]}], "Input",
+ CellLabel->
+  "In[483]:=",ExpressionUUID->"cdebba39-cffd-4f00-aea5-cbb97db7ff04"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Card Animation\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`doc1 = Import[
+          StringJoin[
+           NotebookDirectory[], "Cards.gif"], "Animation"], {"Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Card Animation\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`doc1]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{"View Card Animation" :> Expression[$CellContext`doc1 = Import[
+        StringJoin[
+         NotebookDirectory[], "Cards.gif"], "Animation"], {"Pages", 1}], 
+    "Close Card Animation" :> Expression[
+      Clear[$CellContext`doc1]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[483]=",ExpressionUUID->"7c2b80c2-9d3f-4476-afcd-9034478eb8d8"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`doc1, StandardForm],
+  ImageSizeCache->{31., {1., 10.}}]], "Output",
+ CellLabel->
+  "Out[484]=",ExpressionUUID->"7852e364-4d18-4a74-9e5a-53a55d240fa4"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Cards Sub Aperture Image\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"doc1b", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+          "\"\<CardsSubAp.png\>\""}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Image\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "doc1b", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "doc1b", "]"}]}], "Input",
+ CellLabel->
+  "In[485]:=",ExpressionUUID->"908cada1-0951-403d-b870-a77a3c15cc1f"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Cards Sub Aperture Image\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`doc1b = Import[
+          StringJoin[
+           NotebookDirectory[], "CardsSubAp.png"]], {"Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Image\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`doc1b]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{
+   "View Cards Sub Aperture Image" :> Expression[$CellContext`doc1b = Import[
+        StringJoin[
+         NotebookDirectory[], "CardsSubAp.png"]], {"Pages", 1}], 
+    "Close Image" :> Expression[
+      Clear[$CellContext`doc1b]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[485]=",ExpressionUUID->"5f309c0b-24d3-4921-a77a-b033aa5ec09c"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`doc1b, StandardForm],
+  ImageSizeCache->{39., {1., 10.}}]], "Output",
+ CellLabel->
+  "Out[486]=",ExpressionUUID->"8c2796db-5689-445a-8269-7e66fcbdf9bc"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Chess Animation\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"doc2", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+           "\"\<Chess.gif\>\""}], ",", "\"\<Animation\>\""}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Chess Animation\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "doc2", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "doc2", "]"}]}], "Input",
+ CellLabel->
+  "In[487]:=",ExpressionUUID->"e1fe4b45-1c27-4fcf-94ac-1476dfd23cc7"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Chess Animation\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`doc2 = Import[
+          StringJoin[
+           NotebookDirectory[], "Chess.gif"], "Animation"], {"Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Chess Animation\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`doc2]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{"View Chess Animation" :> Expression[$CellContext`doc2 = Import[
+        StringJoin[
+         NotebookDirectory[], "Chess.gif"], "Animation"], {"Pages", 1}], 
+    "Close Chess Animation" :> Expression[
+      Clear[$CellContext`doc2]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[487]=",ExpressionUUID->"b39f967c-67c4-424c-9a9d-6d6844a6e42d"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`doc2, StandardForm],
+  ImageSizeCache->{31., {1., 10.}}]], "Output",
+ CellLabel->
+  "Out[488]=",ExpressionUUID->"8da64fc4-a236-48a7-9df0-776d707e8487"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Chess Sub Aperture Image\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"doc2b", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+          "\"\<ChessSubAp.png\>\""}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Image\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "doc2b", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "doc2b", "]"}]}], "Input",
+ CellLabel->
+  "In[489]:=",ExpressionUUID->"e187210b-4b51-4914-82ea-f5b52fc8b791"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Chess Sub Aperture Image\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`doc2b = Import[
+          StringJoin[
+           NotebookDirectory[], "ChessSubAp.png"]], {"Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Image\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`doc2b]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{
+   "View Chess Sub Aperture Image" :> Expression[$CellContext`doc2b = Import[
+        StringJoin[
+         NotebookDirectory[], "ChessSubAp.png"]], {"Pages", 1}], 
+    "Close Image" :> Expression[
+      Clear[$CellContext`doc2b]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[489]=",ExpressionUUID->"235b2ffb-0786-4dae-bb00-1d008139edb4"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`doc2b, StandardForm],
+  ImageSizeCache->{39., {1., 10.}}]], "Output",
+ CellLabel->
+  "Out[490]=",ExpressionUUID->"d3a65993-878a-4219-a21e-d3193e70be93"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Lego Animation\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"doc3", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+           "\"\<Lego.gif\>\""}], ",", "\"\<Animation\>\""}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Lego Animation\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "doc3", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "doc3", "]"}]}], "Input",
+ CellLabel->
+  "In[491]:=",ExpressionUUID->"a7c63c33-b997-4a53-9fd9-e17dcfd94133"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Lego Animation\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`doc3 = Import[
+          StringJoin[
+           NotebookDirectory[], "Lego.gif"], "Animation"], {"Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Lego Animation\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`doc3]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{"View Lego Animation" :> Expression[$CellContext`doc3 = Import[
+        StringJoin[
+         NotebookDirectory[], "Lego.gif"], "Animation"], {"Pages", 1}], 
+    "Close Lego Animation" :> Expression[
+      Clear[$CellContext`doc3]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[491]=",ExpressionUUID->"c1c1266f-9864-4d7b-a6bc-ca44e1e4ce71"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`doc3, StandardForm],
+  ImageSizeCache->{31., {1., 10.}}]], "Output",
+ CellLabel->
+  "Out[492]=",ExpressionUUID->"ceae460a-5194-40b2-b985-04f7281408a1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Lego Sub Aperture Image\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"doc3b", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+          "\"\<LegoSubAp.png\>\""}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Image\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "doc3b", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "doc3b", "]"}]}], "Input",
+ CellLabel->
+  "In[493]:=",ExpressionUUID->"f5e6ff3e-947f-4e49-bc2d-c8a5b341c906"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Lego Sub Aperture Image\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`doc3b = Import[
+          StringJoin[
+           NotebookDirectory[], "LegoSubAp.png"]], {"Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Image\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`doc3b]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{
+   "View Lego Sub Aperture Image" :> Expression[$CellContext`doc3b = Import[
+        StringJoin[
+         NotebookDirectory[], "LegoSubAp.png"]], {"Pages", 1}], "Close Image" :> 
+    Expression[
+      Clear[$CellContext`doc3b]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[493]=",ExpressionUUID->"27c8e792-7302-4fc7-86d7-93e62a54e3ec"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`doc3b, StandardForm],
+  ImageSizeCache->{39., {1., 10.}}]], "Output",
+ CellLabel->
+  "Out[494]=",ExpressionUUID->"d9eab359-fe04-40a9-b56e-75f3f5bc4911"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Bracelet Animation\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"doc4", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+           "\"\<Bracelet.gif\>\""}], ",", "\"\<Animation\>\""}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Braclet Animation\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "doc4", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "doc4", "]"}]}], "Input",
+ CellLabel->
+  "In[495]:=",ExpressionUUID->"6a6a77fe-b2d7-4d27-b9d0-5922c4fe26db"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Bracelet Animation\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`doc4 = Import[
+          StringJoin[
+           NotebookDirectory[], "Bracelet.gif"], "Animation"], {"Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Braclet Animation\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`doc4]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{
+   "View Bracelet Animation" :> Expression[$CellContext`doc4 = Import[
+        StringJoin[
+         NotebookDirectory[], "Bracelet.gif"], "Animation"], {"Pages", 1}], 
+    "Close Braclet Animation" :> Expression[
+      Clear[$CellContext`doc4]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[495]=",ExpressionUUID->"16846b5f-514e-48da-b658-62a676c1df35"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`doc4, StandardForm],
+  ImageSizeCache->{31., {1., 10.}}]], "Output",
+ CellLabel->
+  "Out[496]=",ExpressionUUID->"cdd33e2d-1087-49f1-b05c-6f55046e63df"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"ButtonBar", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"\"\<View Bracelet Sub Aperture Image\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{
+       RowBox[{"doc4b", "=", 
+        RowBox[{"Import", "[", 
+         RowBox[{
+          RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+          "\"\<BraceletSubAp.png\>\""}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"\"\<Pages\>\"", ",", "1"}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"\"\<Close Image\>\"", "\[RuleDelayed]", 
+     RowBox[{"Expression", "[", 
+      RowBox[{"Clear", "[", "doc4b", "]"}], "]"}]}]}], "}"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "[", "doc4b", "]"}]}], "Input",
+ CellLabel->
+  "In[497]:=",ExpressionUUID->"903eb72e-bccc-48ed-b8ac-6b08f197dc11"],
+
+Cell[BoxData[
+ InterpretationBox[GridBox[{
+    {
+     ButtonBox["\<\"View Bracelet Sub Aperture Image\"\>",
+      Appearance->{"AbuttingRight"},
+      ButtonFunction:>Expression[$CellContext`doc4b = Import[
+          StringJoin[
+           NotebookDirectory[], "BraceletSubAp.png"]], {"Pages", 1}],
+      Evaluator->Automatic,
+      Method->"Preemptive"], 
+     ButtonBox["\<\"Close Image\"\>",
+      Appearance->{"AbuttingLeft"},
+      ButtonFunction:>Expression[
+        Clear[$CellContext`doc4b]],
+      Evaluator->Automatic,
+      Method->"Preemptive"]}
+   },
+   AutoDelete->False,
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[0.]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  ButtonBar[{
+   "View Bracelet Sub Aperture Image" :> 
+    Expression[$CellContext`doc4b = Import[
+        StringJoin[
+         NotebookDirectory[], "BraceletSubAp.png"]], {"Pages", 1}], 
+    "Close Image" :> Expression[
+      Clear[$CellContext`doc4b]]}, Appearance -> {Automatic}]]], "Output",
+ CellLabel->
+  "Out[497]=",ExpressionUUID->"7581b203-dcce-4177-a132-211860f42f9f"],
+
+Cell[BoxData[
+ DynamicBox[ToBoxes[$CellContext`doc4b, StandardForm],
+  ImageSizeCache->{39., {1., 10.}}]], "Output",
+ CellLabel->
+  "Out[498]=",ExpressionUUID->"663b610f-ddad-4e9e-a9cf-4aee05291178"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<Refocusing Code\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<code\>\"", "}"}]}]}], "]"}]}]], "Input",
+ CellLabel->
+  "In[499]:=",ExpressionUUID->"a38e7210-223f-4739-bcaa-b2d449411f13"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Refocusing Code", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"code",ExpressionUUID->"958b36d7-6681-4ab7-b7b8-1f4905818b0e"],
+
+Cell["\<\
+\tThe following is code set to not evaluate. This is the code I used to \
+create the images that were then used to create the animation above. It is \
+coded for Linux and macOS although only a single line needs to be changed (as \
+is noted in a comment on that line) to work with windows. 
+\tThis code assumes the notebook that it operates in is located with the \
+images you wish to use to digitally refocus the scene. The code generally \
+works by mapping a function over a list of images. \
+\>", "Text",ExpressionUUID->"aa32c1f9-eea8-479d-a6dc-a75ce8d1f5bb"],
+
+Cell["I need to read in the paths of all the images to be used:", "Text",ExpressionUUID->"e6d0b2dd-2642-4876-893e-489445ea75bd"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"set", "=", 
+   RowBox[{
+    RowBox[{"FileNames", "[", 
+     RowBox[{"\"\<*png\>\"", ",", 
+      RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}], "[", 
+    RowBox[{"[", ";;", "]"}], "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733477095773726*^9, 3.733477098708227*^9}, 
+   3.733477251483783*^9, 3.733517226869074*^9, 3.733517944649507*^9, {
+   3.7335285702716093`*^9, 3.733528580174368*^9}, {3.7335287907584352`*^9, 
+   3.733528790829701*^9}, 3.733529663890925*^9, {3.733530131867477*^9, 
+   3.7335301323276443`*^9}, 3.7335305908455973`*^9, {3.7337367159444647`*^9, 
+   3.7337367160458*^9}, 3.733769710532769*^9},
+ FontSize->12,
+ CellLabel->
+  "In[538]:=",ExpressionUUID->"81350660-b95b-4bda-81e2-5f6305807d4f"],
+
+Cell["\<\
+Assuming 289 (from Stanford Light Field Archive) images, I am finding the \
+coordinates of the center image:\
+\>", "Text",ExpressionUUID->"e06e274b-8f35-4e99-a7fb-0a720f11cf01"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"center", "=", 
+   RowBox[{"set", "[", 
+    RowBox[{"[", "145", "]"}], "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733771557712002*^9, 3.733771560630899*^9}, {
+   3.733771614631345*^9, 3.733771618240328*^9}, 3.733772719788458*^9},
+ CellLabel->
+  "In[539]:=",ExpressionUUID->"876bf27b-f0a6-47ef-a279-77fba08e84d2"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"lencenter", "=", 
+   RowBox[{"Length", "[", 
+    RowBox[{"FileNameSplit", "[", "center", "]"}], "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733772191973521*^9, 3.7337722244284897`*^9}, 
+   3.7337727155168457`*^9},
+ CellLabel->
+  "In[540]:=",ExpressionUUID->"776a4efc-5bd0-491f-8815-ff1b7c75363e"],
+
+Cell[BoxData[
+ RowBox[{"centername", "=", 
+  RowBox[{
+   RowBox[{"FileNameSplit", "[", "center", "]"}], "[", 
+   RowBox[{"[", "lencenter", "]"}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733772301853999*^9, 3.733772332284638*^9}, 
+   3.7337727166004744`*^9, 3.733777126757123*^9},
+ CellLabel->
+  "In[541]:=",ExpressionUUID->"e9700bb2-b7bc-4a4a-81dd-209c918766d4"],
+
+Cell[BoxData[
+ RowBox[{"lencentername", "=", 
+  RowBox[{"StringLength", "@", "centername"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.73377913862781*^9, 3.733779158330347*^9}},
+ CellLabel->
+  "In[542]:=",ExpressionUUID->"21e2e160-d009-4948-afdf-c6c540d8ccaa"],
+
+Cell[BoxData[
+ RowBox[{"centername", "=", 
+  RowBox[{"StringTake", "[", 
+   RowBox[{"centername", ",", 
+    RowBox[{"lencentername", "-", "4"}]}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733779160107004*^9, 3.733779184930311*^9}},
+ CellLabel->
+  "In[543]:=",ExpressionUUID->"49c09cd0-48d3-4b7c-8049-073e9dc7121b"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"findcenter", "[", "s1_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"newstring", "=", "s1"}], ",", "splitnewstring", ",", 
+      "wcurrent", ",", "hcurrent", ",", "centerwidth", ",", "centerheight"}], 
+     "}"}], ",", 
+    RowBox[{
+     RowBox[{"splitnewstring", "=", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{"newstring", ",", "\"\<_\>\""}], "]"}]}], ";", 
+     RowBox[{"wcurrent", "=", 
+      RowBox[{"ToExpression", "@", 
+       RowBox[{"splitnewstring", "[", 
+        RowBox[{"[", "5", "]"}], "]"}]}]}], ";", 
+     RowBox[{"hcurrent", "=", 
+      RowBox[{"ToExpression", "@", 
+       RowBox[{"splitnewstring", "[", 
+        RowBox[{"[", "4", "]"}], "]"}]}]}], ";", 
+     RowBox[{"centerwidth", "=", "wcurrent"}], ";", 
+     RowBox[{"centerheight", "=", "hcurrent"}], ";", 
+     RowBox[{"{", 
+      RowBox[{"centerwidth", ",", "centerheight"}], "}"}]}]}], 
+   "]"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.7335285059991837`*^9, 3.733528527798843*^9}, {
+  3.733772419101151*^9, 3.733772464646268*^9}, {3.733772503196805*^9, 
+  3.7337725554365683`*^9}, {3.73377258933252*^9, 3.733772589588029*^9}},
+ FontSize->14,
+ CellLabel->
+  "In[544]:=",ExpressionUUID->"7b7cc354-a285-4986-8721-10dd65140d92"],
+
+Cell[BoxData[
+ RowBox[{"wcenter", "=", 
+  RowBox[{
+   RowBox[{"findcenter", "[", "centername", "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733772610484901*^9, 3.733772639772266*^9}, 
+   3.7337726789851093`*^9},
+ CellLabel->
+  "In[545]:=",ExpressionUUID->"1faf2223-35e2-4952-8d46-d88315795e18"],
+
+Cell[BoxData[
+ RowBox[{"hcenter", "=", 
+  RowBox[{
+   RowBox[{"findcenter", "[", "centername", "]"}], "[", 
+   RowBox[{"[", "2", "]"}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733772630420538*^9, 3.733772640272488*^9}, 
+   3.733772679895009*^9},
+ CellLabel->
+  "In[546]:=",ExpressionUUID->"b4cf5e10-ef30-41d2-a17d-a73fa30abdea"],
+
+Cell["\<\
+Here I get the dimensions of images (assuming they are the constant) from one \
+of the images: \
+\>", "Text",ExpressionUUID->"51dbf591-d6a2-4313-93b5-6efa5bc98027"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"centerim", "=", 
+   RowBox[{"Import", "@", "center"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733772772820657*^9, 3.733772784843635*^9}, 
+   3.733773014742116*^9, 3.733773059804225*^9, 3.733773642999551*^9, 
+   3.73377468874973*^9},
+ CellLabel->
+  "In[547]:=",ExpressionUUID->"33c0cf31-c2cc-4c22-913e-e0ea5d0e8587"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ratio", "=", 
+   RowBox[{"ImageMeasurements", "[", 
+    RowBox[{"centerim", ",", "\"\<AspectRatio\>\""}], "]"}]}], ";"}]], "Input",\
+
+ Evaluatable->False,
+ CellChangeTimes->{{3.733772798780253*^9, 3.7337728134916573`*^9}, {
+   3.7337728704123774`*^9, 3.733772871139598*^9}, 3.7337730816596518`*^9},
+ CellLabel->
+  "In[548]:=",ExpressionUUID->"a993b517-a496-434b-b94b-1bd28f7bc1d8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"height", "=", 
+   RowBox[{
+    RowBox[{"ImageMeasurements", "[", 
+     RowBox[{"centerim", ",", "\"\<Dimensions\>\""}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.7337728994043827`*^9, 3.733772918515329*^9}, 
+   3.733773082323122*^9},
+ CellLabel->
+  "In[549]:=",ExpressionUUID->"15a07f8b-ebbd-4c92-abe5-b2bef8af0d62"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"width", "=", 
+   RowBox[{
+    RowBox[{"ImageMeasurements", "[", 
+     RowBox[{"centerim", ",", "\"\<Dimensions\>\""}], "]"}], "[", 
+    RowBox[{"[", "2", "]"}], "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.733772920508576*^9, 3.7337729311792517`*^9}, 
+   3.7337730831548023`*^9},
+ CellLabel->
+  "In[550]:=",ExpressionUUID->"b06b26c9-2355-4ce2-a18b-ca86de9d2576"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "centerim", "]"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.7337731568680363`*^9, 3.733773159579097*^9}},
+ CellLabel->
+  "In[553]:=",ExpressionUUID->"a36e579e-cb30-40d2-aba1-29563946779a"],
+
+Cell["\<\
+Here is the function used to translate the images by a certain amount kw and \
+kh. \
+\>", "Text",ExpressionUUID->"a93c2cd6-6ddc-493d-a836-7a7444bfab59"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fun", "[", 
+   RowBox[{"image_", ",", "kw_", ",", "kh_"}], "]"}], ":=", 
+  RowBox[{"ImageTransformation", "[", 
+   RowBox[{"image", ",", " ", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "+", "kw"}], " ", ",", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "-", 
+        RowBox[{"kh", " ", "ratio"}]}]}], "}"}], "&"}], ",", 
+    RowBox[{"Resampling", "\[Rule]", "\"\<Bilinear\>\""}], ",", 
+    RowBox[{"Padding", "\[Rule]", "0"}]}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{
+  3.733514626777882*^9, {3.733517381980356*^9, 3.7335173866999607`*^9}, {
+   3.7335185034853687`*^9, 3.73351852112383*^9}, {3.733518676536232*^9, 
+   3.733518709887982*^9}, {3.733532065109322*^9, 3.733532065500697*^9}, {
+   3.733775443796476*^9, 3.733775444836074*^9}, {3.7337760446093073`*^9, 
+   3.733776051888699*^9}},
+ FontSize->16,
+ CellLabel->
+  "In[555]:=",ExpressionUUID->"a7646570-0b7f-4411-a1b2-986711483784"],
+
+Cell["\<\
+This function calculates the distance (in both the x and y directions) the \
+current image is from the center image. \
+\>", "Text",ExpressionUUID->"475d8c1e-3951-43d7-b389-c6c98ae4a601"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fun2", "[", "s1_", "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"set1", "=", "s1"}], ",", "list", ",", "len", ",", "newstring", 
+      ",", "splitnewstring", ",", "newstringnew", ",", "wcurrent", ",", 
+      "hcurrent", ",", "diffw", ",", "diffh"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"list", "=", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{"set1", ",", "\"\</\>\""}], "]"}]}], ";", 
+     RowBox[{"(*", 
+      RowBox[{
+      "this", " ", "must", " ", "be", " ", "changed", " ", "to", " ", 
+       "forward", " ", "slash", " ", "for", " ", "Windows"}], "*)"}], 
+     RowBox[{"len", "=", 
+      RowBox[{"Length", "[", "list", "]"}]}], ";", 
+     RowBox[{"newstring", "=", 
+      RowBox[{"ToString", "[", 
+       RowBox[{
+        RowBox[{"list", "[", 
+         RowBox[{"[", 
+          RowBox[{"len", ";;"}], "]"}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}]}], ";", 
+     RowBox[{"newstringnew", "=", 
+      RowBox[{"StringTake", "[", 
+       RowBox[{"newstring", ",", 
+        RowBox[{
+         RowBox[{"StringLength", "[", "newstring", "]"}], "-", "4"}]}], 
+       "]"}]}], ";", 
+     RowBox[{"splitnewstring", "=", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{"newstringnew", ",", "\"\<_\>\""}], "]"}]}], ";", 
+     RowBox[{"wcurrent", "=", 
+      RowBox[{"ToExpression", "@", 
+       RowBox[{"splitnewstring", "[", 
+        RowBox[{"[", "5", "]"}], "]"}]}]}], ";", 
+     RowBox[{"hcurrent", "=", 
+      RowBox[{"ToExpression", "@", 
+       RowBox[{"splitnewstring", "[", 
+        RowBox[{"[", "4", "]"}], "]"}]}]}], ";", 
+     RowBox[{"diffw", "=", 
+      RowBox[{"wcurrent", "-", "wcenter"}]}], ";", 
+     RowBox[{"diffh", "=", 
+      RowBox[{"hcurrent", "-", "hcenter"}]}], ";", 
+     RowBox[{"{", 
+      RowBox[{"diffw", ",", "diffh"}], "}"}]}]}], "]"}]}]], "Input",
+ Evaluatable->False,
+ FontSize->14,ExpressionUUID->"6ea89bf2-3d40-4ce4-9fda-9feb22682082"],
+
+Cell["\<\
+This function gives the output of the second function to the first function \
+to translate the current image by the desired amount. \
+\>", "Text",ExpressionUUID->"edc28ed7-5d47-4ee6-9f42-01787940bb19"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"fun3", "[", 
+   RowBox[{
+   "string_", ",", "maxdiffw_", ",", "maxdiffh_", ",", "resfac_", ",", "c_"}],
+    "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"st", "=", "string"}], ",", 
+      RowBox[{"maxdw", "=", "maxdiffw"}], ",", 
+      RowBox[{"maxdh", "=", "maxdiffh"}], ",", "curdiffw", ",", "curdiffh", 
+      ",", 
+      RowBox[{"factor", "=", "resfac"}], ",", "curr"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"curr", "=", 
+      RowBox[{"fun2", "[", "string", "]"}]}], ";", 
+     RowBox[{"curdiffw", "=", 
+      RowBox[{"curr", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+     RowBox[{"curdiffh", "=", 
+      RowBox[{"curr", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ";", 
+     RowBox[{"fun", "[", 
+      RowBox[{
+       RowBox[{"ImageResize", "[", 
+        RowBox[{
+         RowBox[{"Import", "[", "string", "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"width", "/", "factor"}], ",", 
+           RowBox[{"height", "/", "factor"}]}], "}"}]}], "]"}], ",", 
+       RowBox[{"c", 
+        FractionBox["curdiffw", 
+         RowBox[{"1000", " ", "maxdw"}]]}], ",", 
+       RowBox[{"c", 
+        FractionBox["curdiffh", 
+         RowBox[{"1000", "maxdh"}]]}]}], "]"}]}]}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.7335153289289837`*^9, 3.733515331808447*^9}, {
+  3.733515574096488*^9, 3.7335155838244057`*^9}, {3.733517800457094*^9, 
+  3.7335178092901363`*^9}, {3.733518031767654*^9, 3.733518034663496*^9}, {
+  3.733518110402171*^9, 3.733518145198392*^9}},
+ FontSize->14,
+ CellLabel->
+  "In[566]:=",ExpressionUUID->"41525713-28ad-4e9c-bbcc-ba289baee1bc"],
+
+Cell["\<\
+Below I calculate the biggest distances from the center. It is used to \
+normalize the translate amounts. The function Image Transformation (found in \
+function 1) is very picky and requires values between 0 and 1. Notice the \
+divide by 1000 on the last line in function 3. This was needed to keep the \
+function Image Transformation from translating the image too much. The value \
+of 1000 was found experimentally. \
+\>", "Text",ExpressionUUID->"c81cb7d8-773f-4c25-9c9c-c9c14746b471"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"finlist", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"fun2", "[", "#", "]"}], "&"}], "/@", "set"}]}], ";"}]], "Input",\
+
+ Evaluatable->False,
+ FontSize->14,ExpressionUUID->"91bc9ade-e8db-48a2-b3eb-31d3e4497b4f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"diffws", "=", 
+   RowBox[{"Abs", "[", 
+    RowBox[{"finlist", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "1"}], "]"}], "]"}], "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{3.733477751152772*^9, 3.7335151919849453`*^9, 
+  3.733517840906414*^9},
+ FontSize->14,
+ CellLabel->
+  "In[570]:=",ExpressionUUID->"56e89d70-ea41-4e01-ac7e-6edafa232189"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"diffhs", "=", 
+   RowBox[{"Abs", "[", 
+    RowBox[{"finlist", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "2"}], "]"}], "]"}], "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{3.733477748824644*^9},
+ FontSize->14,
+ CellLabel->
+  "In[571]:=",ExpressionUUID->"bfa12038-d10c-4b8d-8350-0be79419b323"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"maxdiffw", "=", 
+   RowBox[{"Max", "[", "diffws", "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{3.733775639883646*^9},
+ FontSize->14,
+ CellLabel->
+  "In[572]:=",ExpressionUUID->"c1d923b3-b35f-4a5c-98d5-538ca2472649"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"maxdiffh", "=", 
+   RowBox[{"Max", "[", "diffhs", "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{3.733775640627393*^9},
+ FontSize->14,
+ CellLabel->
+  "In[573]:=",ExpressionUUID->"31684fc0-d594-4587-8fcb-4293103ac9a9"],
+
+Cell["\<\
+Below I generate a list of refocusing depths I want to try. The correct range \
+of these is found experimentally (and also are related to the value of 1000 I \
+found earlier) and the numbers shown here (for some particular scene) are not \
+the same for a different scene. \
+\>", "Text",ExpressionUUID->"67f1e040-b1c6-4107-8992-d0f50fb3a041"],
+
+Cell[BoxData[
+ RowBox[{"clist", "=", 
+  RowBox[{
+   RowBox[{"Array", "[", 
+    RowBox[{
+     RowBox[{"#", "&"}], ",", "131", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"-", "25"}], ",", "40"}], "}"}]}], "]"}], "//", 
+   "N"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.7337033979812927`*^9, 3.7337035779078503`*^9}, {
+  3.733703784101801*^9, 3.733703795717936*^9}, {3.7337046838039093`*^9, 
+  3.733704684474827*^9}, {3.733704757354755*^9, 3.733704758637019*^9}, {
+  3.73378136049715*^9, 3.733781368507833*^9}},
+ FontSize->14,
+ CellLabel->
+  "In[577]:=",ExpressionUUID->"f3a1d33b-a3ec-4f6f-9f09-c5be968c0a38"],
+
+Cell["\<\
+Here is the final function that takes in a desired focus depth. It also \
+allows the images to be downsampled to speed up the computation. \
+\>", "Text",ExpressionUUID->"f9ea4226-aec8-4e73-ace9-7e31e91519e7"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ex", "[", 
+   RowBox[{"cva_", ",", "resam_"}], "]"}], ":=", 
+  RowBox[{"Export", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<focused/c=\>\"", "<>", 
+     RowBox[{"ToString", "[", "cva", "]"}], "<>", "\"\<.png\>\""}], ",", 
+    RowBox[{"ImageResize", "[", 
+     RowBox[{
+      RowBox[{"Image", "[", 
+       RowBox[{
+        RowBox[{"Fold", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"#1", "+", 
+            RowBox[{"ImageData", "@", 
+             RowBox[{"fun3", "[", 
+              RowBox[{
+              "#2", ",", "maxdiffw", ",", "maxdiffh", ",", "resam", ",", 
+               "cva"}], "]"}]}]}], "&"}], ",", 
+          RowBox[{"0", " ", 
+           RowBox[{"set", "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], ",", "set"}], "]"}], "/", 
+        RowBox[{"Length", "@", "set"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"width", ",", "height"}], "}"}], ",", 
+      RowBox[{"Resampling", "\[Rule]", "\"\<Bilinear\>\""}]}], "]"}]}], 
+   "]"}]}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{
+  3.733778013224813*^9, {3.733778185476572*^9, 3.733778187735402*^9}, {
+   3.73377840458683*^9, 3.733778406694957*^9}},
+ CellLabel->
+  "In[584]:=",ExpressionUUID->"1e1c8256-da7c-4ce4-892a-440fe1b33002"],
+
+Cell["\<\
+This maps the previous function of the list of focus depths, generating a \
+number of images focused at different depths. \
+\>", "Text",ExpressionUUID->"cc6b184f-1428-4f6d-9162-11b5afa1b109"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"ex", "[", 
+    RowBox[{"#", ",", "4"}], "]"}], "&"}], "/@", "clist"}]], "Input",
+ Evaluatable->False,
+ CellChangeTimes->{{3.7337780336732903`*^9, 3.7337780395272923`*^9}, {
+  3.733778418566576*^9, 3.73377843155575*^9}, {3.733779462367611*^9, 
+  3.733779467761129*^9}},
+ CellLabel->
+  "In[585]:=",ExpressionUUID->"0e904e31-7502-47db-8a76-67cea7b8e6ab"],
+
+Cell["\<\
+The following codes reads in the list of refocused images and animates them. \
+It creates two animations, one at a higher resolution than the other. \
+\>", "Text",ExpressionUUID->"b9e28420-9d27-402a-be76-de061925b711"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"names", "=", 
+   RowBox[{"FileNames", "[", 
+    RowBox[{"\"\<*.png\>\"", ",", 
+     RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}]}], ";"}]], "Input",
+ Evaluatable->False,
+ CellLabel->"In[80]:=",ExpressionUUID->"f9d3edfb-52c2-4124-8d28-1cf14e20c0a1"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"names2", "=", 
+   RowBox[{"names", "[", 
+    RowBox[{"[", 
+     RowBox[{"Ordering", "@", 
+      RowBox[{"PadRight", "@", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"names", ",", 
+         RowBox[{
+          RowBox[{"x", ":", "NumberString"}], "\[RuleDelayed]", 
+          RowBox[{"ToExpression", "@", "x"}]}]}], "]"}]}]}], "]"}], "]"}]}], 
+  ";"}]], "Input",
+ Evaluatable->False,
+ CellLabel->"In[81]:=",ExpressionUUID->"c55c5f1a-4cc0-4e64-aaed-3aecc29f3742"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"imagelist", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Import", "@", "#"}], "&"}], "/@", "names2"}]}], ";"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\</try1.gif\>\""}], ",",
+    "imagelist", ",", 
+   RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",", 
+   RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", ".2"}]}], "]"}]}], "Input",
+ Evaluatable->False,
+ CellLabel->"In[82]:=",ExpressionUUID->"9b7e469c-4a6e-432e-bd9c-5e97c38a86d9"],
+
+Cell[BoxData[
+ RowBox[{"testim", "=", 
+  RowBox[{"Import", "[", 
+   RowBox[{"names2", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellLabel->"In[84]:=",ExpressionUUID->"e7d3f199-833c-4815-b2b7-92c140124f49"],
+
+Cell[BoxData[
+ RowBox[{"height", "=", 
+  RowBox[{
+   RowBox[{"ImageMeasurements", "[", 
+    RowBox[{"testim", ",", "\"\<Dimensions\>\""}], "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellLabel->"In[85]:=",ExpressionUUID->"245af611-04b8-4c6c-8a30-d5f797415259"],
+
+Cell[BoxData[
+ RowBox[{"width", "=", 
+  RowBox[{
+   RowBox[{"ImageMeasurements", "[", 
+    RowBox[{"testim", ",", "\"\<Dimensions\>\""}], "]"}], "[", 
+   RowBox[{"[", "2", "]"}], "]"}]}]], "Input",
+ Evaluatable->False,
+ CellLabel->"In[86]:=",ExpressionUUID->"dc9e7eaa-b7cd-4f46-b95e-9138431cd45d"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "testim", "]"}]], "Input",
+ Evaluatable->False,
+ CellLabel->"In[87]:=",ExpressionUUID->"47d9410e-3ebf-475b-961c-dbfe03eca0fd"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"imagelist", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ImageResize", "[", 
+      RowBox[{
+       RowBox[{"Import", "@", "#"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"width", "/", "2"}], ",", 
+         RowBox[{"height", "/", "2"}]}], "}"}], ",", 
+       RowBox[{"Resampling", "\[Rule]", "\"\<Bilinear\>\""}]}], "]"}], "&"}], 
+    "/@", "names2"}]}], ";"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\</try2.gif\>\""}], ",",
+    "imagelist", ",", 
+   RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",", 
+   RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", ".2"}], ",", 
+   RowBox[{"ImageResolution", "\[Rule]", "200"}]}], "]"}]}], "Input",
+ Evaluatable->False,
+ CellLabel->"In[88]:=",ExpressionUUID->"79d85b29-863a-496a-bbfe-5dd5f52fbe2e"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "imagelist", "]"}]], "Input",
+ Evaluatable->False,ExpressionUUID->"dd8220c6-5a43-45e8-955f-6bd23a1449d1"],
+
+Cell[BoxData[
+ RowBox[{"CellPrint", "@", 
+  RowBox[{"Cell", "[", 
+   RowBox[{"\"\<References\>\"", ",", "\"\<Chapter\>\"", 
+    RowBox[{"(*", 
+     RowBox[{"format", " ", "style", " ", "option"}], "*)"}], ",", 
+    RowBox[{"CellTags", "\[Rule]", 
+     RowBox[{"{", "\"\<ref\>\"", "}"}]}]}], "]"}]}]], "Input",
+ Evaluatable->False,ExpressionUUID->"350764ac-e445-4973-9bad-388ccbee6715"],
+
+Cell["That\[CloseCurlyQuote]s it!", "Text",ExpressionUUID->"f242f2d3-b180-451a-bd87-f3ecd529732d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["References", "Chapter",
+ GeneratedCell->True,
+ CellAutoOverwrite->True,
+ CellTags->"ref",ExpressionUUID->"42333870-aae4-4de6-976a-c8a2e0724ec1"],
+
+Cell["\<\
+Below are the numbers corresponding to the superscript references. 
+For each number there is a page number and an abbreviation to the document \
+the reference is from. 
+ng refers to:
+R. Ng, \[OpenCurlyDoubleQuote]Digital light field photography,\
+\[CloseCurlyDoubleQuote] Ph.D. thesis (Stanford University), 2006. 
+
+josaa refers to:
+Edmund Y. Lam, \[OpenCurlyDoubleQuote]Computational photography with \
+plenoptic camera and light field capture: tutorial,\[CloseCurlyDoubleQuote] \
+Journal of the Optical Society of America, Vol. 31, No.11, November 2015. \
+\>", "Text",ExpressionUUID->"765c5092-5913-4cdb-987d-56ebbc5e3ed2"],
+
+Cell["\<\
+1. 2022 josaa
+2.13 ng
+3. 2023 josaa
+4. 19 ng
+5. 20 ng
+6. 20 ng
+7. 31 ng
+8. 54 ng
+9. 55 ng\
+\>", "Text",ExpressionUUID->"f21e42f6-f558-4b9f-a875-5fd4997fd52b"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{720, 770},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]], 
+   Cell[
+    StyleData["Notebook"], Background -> GrayLevel[0.99]], 
+   Cell[
+    StyleData["Input"], Background -> RGBColor[1, 1, 0.85]], 
+   Cell[
+    StyleData["Output"], Background -> RGBColor[0.88, 1, 0.88]], 
+   Cell[
+    StyleData["Text"], LineSpacing -> {2, 0}, FontSize -> 16, Background -> 
+    RGBColor[0.94, 0.91, 0.88]], 
+   Cell[
+    StyleData["Chapter"], Background -> GrayLevel[0.9]]}, Visible -> False, 
+  FrontEndVersion -> "12.0 for Mac OS X x86 (64-bit) (April 8, 2019)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "toc"->{
+  Cell[3701, 105, 157, 3, 85, "Chapter",ExpressionUUID->"eca8123e-78f9-41f2-a249-0ee8d6b16d3e",
+   CellTags->"toc"]},
+ "intro"->{
+  Cell[9224, 257, 154, 3, 85, "Chapter",ExpressionUUID->"388b8d11-f45d-442e-b707-e93ea983a126",
+   CellTags->"intro"]},
+ "light"->{
+  Cell[10429, 286, 153, 3, 85, "Chapter",ExpressionUUID->"5ac7b368-9faa-4685-be68-05d346f11b0a",
+   CellTags->"light"]},
+ "irr"->{
+  Cell[17520, 477, 157, 3, 85, "Chapter",ExpressionUUID->"0368fb99-1613-4a07-9d27-64156fcd8722",
+   CellTags->"irr"]},
+ "cam"->{
+  Cell[33868, 969, 158, 3, 85, "Chapter",ExpressionUUID->"dcd05d21-2bbe-49fa-a47e-577b6e68aed3",
+   CellTags->"cam"]},
+ "refocus"->{
+  Cell[38250, 1081, 173, 3, 85, "Chapter",ExpressionUUID->"14312faf-a03b-4275-855c-4cc214230bb2",
+   CellTags->"refocus"]},
+ "ani"->{
+  Cell[41585, 1183, 161, 3, 85, "Chapter",ExpressionUUID->"42956f9a-6b1e-4f1d-a4c1-6be99dc64270",
+   CellTags->"ani"]},
+ "code"->{
+  Cell[62162, 1751, 156, 3, 85, "Chapter",ExpressionUUID->"958b36d7-6681-4ab7-b7b8-1f4905818b0e",
+   CellTags->"code"]},
+ "ref"->{
+  Cell[84508, 2378, 150, 3, 85, "Chapter",ExpressionUUID->"42333870-aae4-4de6-976a-c8a2e0724ec1",
+   CellTags->"ref"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"toc", 86382, 2436},
+ {"intro", 86512, 2439},
+ {"light", 86644, 2442},
+ {"irr", 86775, 2445},
+ {"cam", 86904, 2448},
+ {"refocus", 87037, 2451},
+ {"ani", 87171, 2454},
+ {"code", 87302, 2457},
+ {"ref", 87433, 2460}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 163, 6, 160, "Title",ExpressionUUID->"c41a0158-a6db-45a4-ad7e-ff409a806883"],
+Cell[746, 30, 475, 8, 192, "Text",ExpressionUUID->"8153022d-8800-4488-8e6e-f3ae5e36052b"],
+Cell[1224, 40, 159, 3, 46, "Input",ExpressionUUID->"00e35e8f-f54e-41f6-a0a2-b654b711ef59"],
+Cell[1386, 45, 1888, 45, 236, "Input",ExpressionUUID->"913b0586-1ad8-4114-a274-8ead38c715ed"],
+Cell[3277, 92, 399, 9, 68, "Input",ExpressionUUID->"78dd2b36-2377-47fa-aa42-4f875c3fc08b"],
+Cell[CellGroupData[{
+Cell[3701, 105, 157, 3, 85, "Chapter",ExpressionUUID->"eca8123e-78f9-41f2-a249-0ee8d6b16d3e",
+ CellTags->"toc"],
+Cell[3861, 110, 574, 8, 304, "Text",ExpressionUUID->"58fdd030-01c4-4e91-8340-9e3c623f6290"],
+Cell[CellGroupData[{
+Cell[4460, 122, 2348, 57, 299, "Input",ExpressionUUID->"984afed9-b48a-469b-880c-1f9c4830e060"],
+Cell[6811, 181, 1965, 59, 217, "Output",ExpressionUUID->"6a19bc2d-1a1a-49f0-94d4-ee4a2a4b80c9"]
+}, Open  ]],
+Cell[8791, 243, 396, 9, 68, "Input",ExpressionUUID->"71d09a8b-a78b-49af-9aef-15b85f84a254"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9224, 257, 154, 3, 85, "Chapter",ExpressionUUID->"388b8d11-f45d-442e-b707-e93ea983a126",
+ CellTags->"intro"],
+Cell[9381, 262, 613, 8, 304, "Text",ExpressionUUID->"241f9c29-4036-4fcd-8d61-e586f52d947d"],
+Cell[9997, 272, 395, 9, 68, "Input",ExpressionUUID->"1cd44901-989f-45ea-960a-88f1c4b34899"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[10429, 286, 153, 3, 85, "Chapter",ExpressionUUID->"5ac7b368-9faa-4685-be68-05d346f11b0a",
+ CellTags->"light"],
+Cell[10585, 291, 2523, 63, 514, "Text",ExpressionUUID->"2d7f5e84-2c6b-4c31-ad71-35390c92e892"],
+Cell[CellGroupData[{
+Cell[13133, 358, 849, 22, 152, "Input",ExpressionUUID->"c5b09fcc-30e6-4a15-b4af-fcbcfd710869"],
+Cell[13985, 382, 1286, 33, 59, "Output",ExpressionUUID->"8ddf0e51-069d-48db-b5a4-5581656ebcc8"],
+Cell[15274, 417, 198, 4, 50, "Output",ExpressionUUID->"dc76e2b4-fb31-4b82-a025-55a417ed910c"]
+}, Open  ]],
+Cell[15487, 424, 1594, 37, 388, "Text",ExpressionUUID->"d4d485c7-c67b-4f5d-b4f4-8c3126ea846d"],
+Cell[17084, 463, 399, 9, 68, "Input",ExpressionUUID->"198716c2-8ed4-4798-b37d-92dcd1fb260b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17520, 477, 157, 3, 85, "Chapter",ExpressionUUID->"0368fb99-1613-4a07-9d27-64156fcd8722",
+ CellTags->"irr"],
+Cell[17680, 482, 3156, 70, 908, "Text",ExpressionUUID->"8a6e51a6-657e-4611-b120-daba6b3f501b"],
+Cell[CellGroupData[{
+Cell[20861, 556, 849, 22, 152, "Input",ExpressionUUID->"17f27d4d-dec2-413f-ab66-9b373482f8d6"],
+Cell[21713, 580, 1286, 33, 59, "Output",ExpressionUUID->"797344f4-d08f-400d-9121-930d3325f987"],
+Cell[23002, 615, 198, 4, 50, "Output",ExpressionUUID->"b9aa24bd-0a39-4e30-960d-d487bd526027"]
+}, Open  ]],
+Cell[23215, 622, 10213, 331, 1274, "Text",ExpressionUUID->"f8e3aca6-22b5-485c-96b1-31c319850d8d"],
+Cell[33431, 955, 400, 9, 68, "Input",ExpressionUUID->"30c422de-379f-47cb-8657-47dcb0529b31"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33868, 969, 158, 3, 85, "Chapter",ExpressionUUID->"dcd05d21-2bbe-49fa-a47e-577b6e68aed3",
+ CellTags->"cam"],
+Cell[34029, 974, 674, 9, 304, "Text",ExpressionUUID->"95b8f103-68e3-4bdf-913a-59276794e29d"],
+Cell[CellGroupData[{
+Cell[34728, 987, 849, 22, 152, "Input",ExpressionUUID->"a213e73e-50d6-4d0b-b4f6-701b452e1664"],
+Cell[35580, 1011, 1286, 33, 59, "Output",ExpressionUUID->"c283b989-601c-4306-81be-642022d1fb8e"],
+Cell[36869, 1046, 198, 4, 50, "Output",ExpressionUUID->"1fb75046-7473-4929-ad97-aca3726d3960"]
+}, Open  ]],
+Cell[37082, 1053, 713, 12, 304, "Text",ExpressionUUID->"3d43180a-d36d-4c2e-ade0-7b649308ceb0"],
+Cell[37798, 1067, 415, 9, 68, "Input",ExpressionUUID->"de5c1789-7305-4850-8b92-17184632b627"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38250, 1081, 173, 3, 85, "Chapter",ExpressionUUID->"14312faf-a03b-4275-855c-4cc214230bb2",
+ CellTags->"refocus"],
+Cell[38426, 1086, 2716, 81, 281, "Text",ExpressionUUID->"934860e2-4e62-449f-93f4-3ec78cf66252"],
+Cell[41145, 1169, 403, 9, 68, "Input",ExpressionUUID->"e8105b55-c72d-4bab-bb47-6d8f70ef6b2c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41585, 1183, 161, 3, 85, "Chapter",ExpressionUUID->"42956f9a-6b1e-4f1d-a4c1-6be99dc64270",
+ CellTags->"ani"],
+Cell[41749, 1188, 1229, 17, 598, "Text",ExpressionUUID->"10fec482-5819-40f8-83d0-5c91ae17c658"],
+Cell[CellGroupData[{
+Cell[43003, 1209, 829, 21, 152, "Input",ExpressionUUID->"cdebba39-cffd-4f00-aea5-cbb97db7ff04"],
+Cell[43835, 1232, 1289, 32, 59, "Output",ExpressionUUID->"7c2b80c2-9d3f-4476-afcd-9034478eb8d8"],
+Cell[45127, 1266, 198, 4, 50, "Output",ExpressionUUID->"7852e364-4d18-4a74-9e5a-53a55d240fa4"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45362, 1275, 789, 20, 131, "Input",ExpressionUUID->"908cada1-0951-403d-b870-a77a3c15cc1f"],
+Cell[46154, 1297, 1283, 33, 59, "Output",ExpressionUUID->"5f309c0b-24d3-4921-a77a-b033aa5ec09c"],
+Cell[47440, 1332, 199, 4, 50, "Output",ExpressionUUID->"8c2796db-5689-445a-8269-7e66fcbdf9bc"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47676, 1341, 831, 21, 152, "Input",ExpressionUUID->"e1fe4b45-1c27-4fcf-94ac-1476dfd23cc7"],
+Cell[48510, 1364, 1293, 32, 59, "Output",ExpressionUUID->"b39f967c-67c4-424c-9a9d-6d6844a6e42d"],
+Cell[49806, 1398, 198, 4, 50, "Output",ExpressionUUID->"8da64fc4-a236-48a7-9df0-776d707e8487"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50041, 1407, 789, 20, 131, "Input",ExpressionUUID->"e187210b-4b51-4914-82ea-f5b52fc8b791"],
+Cell[50833, 1429, 1283, 33, 59, "Output",ExpressionUUID->"235b2ffb-0786-4dae-bb00-1d008139edb4"],
+Cell[52119, 1464, 199, 4, 50, "Output",ExpressionUUID->"d3a65993-878a-4219-a21e-d3193e70be93"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52355, 1473, 828, 21, 131, "Input",ExpressionUUID->"a7c63c33-b997-4a53-9fd9-e17dcfd94133"],
+Cell[53186, 1496, 1287, 32, 59, "Output",ExpressionUUID->"c1c1266f-9864-4d7b-a6bc-ca44e1e4ce71"],
+Cell[54476, 1530, 198, 4, 50, "Output",ExpressionUUID->"ceae460a-5194-40b2-b985-04f7281408a1"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54711, 1539, 787, 20, 131, "Input",ExpressionUUID->"f5e6ff3e-947f-4e49-bc2d-c8a5b341c906"],
+Cell[55501, 1561, 1279, 33, 59, "Output",ExpressionUUID->"27c8e792-7302-4fc7-86d7-93e62a54e3ec"],
+Cell[56783, 1596, 199, 4, 50, "Output",ExpressionUUID->"d9eab359-fe04-40a9-b56e-75f3f5bc4911"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57019, 1605, 839, 21, 152, "Input",ExpressionUUID->"6a6a77fe-b2d7-4d27-b9d0-5922c4fe26db"],
+Cell[57861, 1628, 1313, 33, 59, "Output",ExpressionUUID->"16846b5f-514e-48da-b658-62a676c1df35"],
+Cell[59177, 1663, 198, 4, 50, "Output",ExpressionUUID->"cdd33e2d-1087-49f1-b05c-6f55046e63df"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[59412, 1672, 795, 20, 131, "Input",ExpressionUUID->"903eb72e-bccc-48ed-b8ac-6b08f197dc11"],
+Cell[60210, 1694, 1300, 34, 59, "Output",ExpressionUUID->"7581b203-dcce-4177-a132-211860f42f9f"],
+Cell[61513, 1730, 199, 4, 50, "Output",ExpressionUUID->"663b610f-ddad-4e9e-a9cf-4aee05291178"]
+}, Open  ]],
+Cell[61727, 1737, 398, 9, 68, "Input",ExpressionUUID->"a38e7210-223f-4739-bcaa-b2d449411f13"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[62162, 1751, 156, 3, 85, "Chapter",ExpressionUUID->"958b36d7-6681-4ab7-b7b8-1f4905818b0e",
+ CellTags->"code"],
+Cell[62321, 1756, 571, 8, 304, "Text",ExpressionUUID->"aa32c1f9-eea8-479d-a6dc-a75ce8d1f5bb"],
+Cell[62895, 1766, 128, 0, 52, "Text",ExpressionUUID->"e6d0b2dd-2642-4876-893e-489445ea75bd"],
+Cell[63026, 1768, 771, 17, 45, "Input",ExpressionUUID->"81350660-b95b-4bda-81e2-5f6305807d4f",
+ Evaluatable->False],
+Cell[63800, 1787, 187, 3, 94, "Text",ExpressionUUID->"e06e274b-8f35-4e99-a7fb-0a720f11cf01"],
+Cell[63990, 1792, 372, 9, 46, "Input",ExpressionUUID->"876bf27b-f0a6-47ef-a279-77fba08e84d2",
+ Evaluatable->False],
+Cell[64365, 1803, 356, 9, 46, "Input",ExpressionUUID->"776a4efc-5bd0-491f-8815-ff1b7c75363e",
+ Evaluatable->False],
+Cell[64724, 1814, 384, 9, 46, "Input",ExpressionUUID->"e9700bb2-b7bc-4a4a-81dd-209c918766d4",
+ Evaluatable->False],
+Cell[65111, 1825, 273, 6, 46, "Input",ExpressionUUID->"21e2e160-d009-4948-afdf-c6c540d8ccaa",
+ Evaluatable->False],
+Cell[65387, 1833, 335, 8, 46, "Input",ExpressionUUID->"49c09cd0-48d3-4b7c-8049-073e9dc7121b",
+ Evaluatable->False],
+Cell[65725, 1843, 1313, 33, 228, "Input",ExpressionUUID->"7b7cc354-a285-4986-8721-10dd65140d92",
+ Evaluatable->False],
+Cell[67041, 1878, 352, 9, 46, "Input",ExpressionUUID->"1faf2223-35e2-4952-8d46-d88315795e18",
+ Evaluatable->False],
+Cell[67396, 1889, 350, 9, 46, "Input",ExpressionUUID->"b4cf5e10-ef30-41d2-a17d-a73fa30abdea",
+ Evaluatable->False],
+Cell[67749, 1900, 174, 3, 94, "Text",ExpressionUUID->"51dbf591-d6a2-4313-93b5-6efa5bc98027"],
+Cell[67926, 1905, 373, 9, 46, "Input",ExpressionUUID->"33c0cf31-c2cc-4c22-913e-e0ea5d0e8587",
+ Evaluatable->False],
+Cell[68302, 1916, 416, 10, 46, "Input",ExpressionUUID->"a993b517-a496-434b-b94b-1bd28f7bc1d8",
+ Evaluatable->False],
+Cell[68721, 1928, 420, 11, 46, "Input",ExpressionUUID->"15a07f8b-ebbd-4c92-abe5-b2bef8af0d62",
+ Evaluatable->False],
+Cell[69144, 1941, 421, 11, 46, "Input",ExpressionUUID->"b06b26c9-2355-4ce2-a18b-ca86de9d2576",
+ Evaluatable->False],
+Cell[69568, 1954, 237, 5, 46, "Input",ExpressionUUID->"a36e579e-cb30-40d2-aba1-29563946779a",
+ Evaluatable->False],
+Cell[69808, 1961, 162, 3, 52, "Text",ExpressionUUID->"a93c2cd6-6ddc-493d-a836-7a7444bfab59"],
+Cell[69973, 1966, 1072, 27, 129, "Input",ExpressionUUID->"a7646570-0b7f-4411-a1b2-986711483784",
+ Evaluatable->False],
+Cell[71048, 1995, 196, 3, 94, "Text",ExpressionUUID->"475d8c1e-3951-43d7-b389-c6c98ae4a601"],
+Cell[71247, 2000, 1983, 51, 338, "Input",ExpressionUUID->"6ea89bf2-3d40-4ce4-9fda-9feb22682082",
+ Evaluatable->False],
+Cell[73233, 2053, 211, 3, 94, "Text",ExpressionUUID->"edc28ed7-5d47-4ee6-9f42-01787940bb19"],
+Cell[73447, 2058, 1704, 46, 219, "Input",ExpressionUUID->"41525713-28ad-4e9c-bbcc-ba289baee1bc",
+ Evaluatable->False],
+Cell[75154, 2106, 497, 7, 220, "Text",ExpressionUUID->"c81cb7d8-773f-4c25-9c9c-c9c14746b471"],
+Cell[75654, 2115, 247, 8, 48, "Input",ExpressionUUID->"91bc9ade-e8db-48a2-b3eb-31d3e4497b4f",
+ Evaluatable->False],
+Cell[75904, 2125, 404, 12, 48, "Input",ExpressionUUID->"56e89d70-ea41-4e01-ac7e-6edafa232189",
+ Evaluatable->False],
+Cell[76311, 2139, 355, 11, 48, "Input",ExpressionUUID->"bfa12038-d10c-4b8d-8350-0be79419b323",
+ Evaluatable->False],
+Cell[76669, 2152, 271, 8, 48, "Input",ExpressionUUID->"c1d923b3-b35f-4a5c-98d5-538ca2472649",
+ Evaluatable->False],
+Cell[76943, 2162, 271, 8, 48, "Input",ExpressionUUID->"31684fc0-d594-4587-8fcb-4293103ac9a9",
+ Evaluatable->False],
+Cell[77217, 2172, 351, 5, 136, "Text",ExpressionUUID->"67f1e040-b1c6-4107-8992-d0f50fb3a041"],
+Cell[77571, 2179, 633, 17, 48, "Input",ExpressionUUID->"f3a1d33b-a3ec-4f6f-9f09-c5be968c0a38",
+ Evaluatable->False],
+Cell[78207, 2198, 218, 3, 94, "Text",ExpressionUUID->"f9ea4226-aec8-4e73-ace9-7e31e91519e7"],
+Cell[78428, 2203, 1312, 35, 152, "Input",ExpressionUUID->"1e1c8256-da7c-4ce4-892a-440fe1b33002",
+ Evaluatable->False],
+Cell[79743, 2240, 201, 3, 94, "Text",ExpressionUUID->"cc6b184f-1428-4f6d-9162-11b5afa1b109"],
+Cell[79947, 2245, 398, 10, 46, "Input",ExpressionUUID->"0e904e31-7502-47db-8a76-67cea7b8e6ab",
+ Evaluatable->False],
+Cell[80348, 2257, 228, 3, 94, "Text",ExpressionUUID->"b9e28420-9d27-402a-be76-de061925b711"],
+Cell[80579, 2262, 287, 7, 46, "Input",ExpressionUUID->"f9d3edfb-52c2-4124-8d28-1cf14e20c0a1",
+ Evaluatable->False],
+Cell[80869, 2271, 503, 14, 110, "Input",ExpressionUUID->"c55c5f1a-4cc0-4e64-aaed-3aecc29f3742",
+ Evaluatable->False],
+Cell[81375, 2287, 559, 14, 89, "Input",ExpressionUUID->"9b7e469c-4a6e-432e-bd9c-5e97c38a86d9",
+ Evaluatable->False],
+Cell[81937, 2303, 246, 6, 46, "Input",ExpressionUUID->"e7d3f199-833c-4815-b2b7-92c140124f49",
+ Evaluatable->False],
+Cell[82186, 2311, 298, 7, 46, "Input",ExpressionUUID->"245af611-04b8-4c6c-8a30-d5f797415259",
+ Evaluatable->False],
+Cell[82487, 2320, 297, 7, 46, "Input",ExpressionUUID->"dc9e7eaa-b7cd-4f46-b95e-9138431cd45d",
+ Evaluatable->False],
+Cell[82787, 2329, 163, 3, 46, "Input",ExpressionUUID->"47d9410e-3ebf-475b-961c-dbfe03eca0fd",
+ Evaluatable->False],
+Cell[82953, 2334, 884, 23, 131, "Input",ExpressionUUID->"79d85b29-863a-496a-bbfe-5dd5f52fbe2e",
+ Evaluatable->False],
+Cell[83840, 2359, 142, 2, 46, "Input",ExpressionUUID->"dd8220c6-5a43-45e8-955f-6bd23a1449d1",
+ Evaluatable->False],
+Cell[83985, 2363, 385, 8, 68, "Input",ExpressionUUID->"350764ac-e445-4973-9bad-388ccbee6715",
+ Evaluatable->False],
+Cell[84373, 2373, 98, 0, 52, "Text",ExpressionUUID->"f242f2d3-b180-451a-bd87-f3ecd529732d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[84508, 2378, 150, 3, 85, "Chapter",ExpressionUUID->"42333870-aae4-4de6-976a-c8a2e0724ec1",
+ CellTags->"ref"],
+Cell[84661, 2383, 635, 12, 430, "Text",ExpressionUUID->"765c5092-5913-4cdb-987d-56ebbc5e3ed2"],
+Cell[85299, 2397, 168, 10, 388, "Text",ExpressionUUID->"f21e42f6-f558-4b9f-a875-5fd4997fd52b"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
