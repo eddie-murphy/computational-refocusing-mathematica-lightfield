@@ -1,0 +1,157 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5319,        149]
+NotebookOptionsPosition[      4077,        124]
+NotebookOutlinePosition[      4412,        139]
+CellTagsIndexPosition[      4369,        136]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["", "Section",ExpressionUUID->"b63f2c5c-faa6-4463-a41c-781e12c2262a"],
+
+Cell[BoxData[
+ RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}]], "Input",
+ CellLabel->"In[91]:=",ExpressionUUID->"c8631a4e-4eb1-4dc5-a7c1-868601c2a6ee"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"names", "=", 
+   RowBox[{"FileNames", "[", 
+    RowBox[{"\"\<*.png\>\"", ",", 
+     RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}]}], ";"}]], "Input",
+ CellLabel->"In[92]:=",ExpressionUUID->"431fd734-64c5-4ecc-8efb-efefba40484c"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"names2", "=", 
+   RowBox[{"names", "[", 
+    RowBox[{"[", 
+     RowBox[{"Ordering", "@", 
+      RowBox[{"PadRight", "@", 
+       RowBox[{"StringSplit", "[", 
+        RowBox[{"names", ",", 
+         RowBox[{
+          RowBox[{"x", ":", "NumberString"}], "\[RuleDelayed]", 
+          RowBox[{"ToExpression", "@", "x"}]}]}], "]"}]}]}], "]"}], "]"}]}], 
+  ";"}]], "Input",
+ CellLabel->"In[93]:=",ExpressionUUID->"5c857032-2711-46d0-899a-7c7a519c21d5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"imagelist", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Import", "@", "#"}], "&"}], "/@", "names2"}]}], ";"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\</try1.gif\>\""}], ",",
+    "imagelist", ",", 
+   RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",", 
+   RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", ".2"}]}], "]"}]}], "Input",
+ CellLabel->"In[94]:=",ExpressionUUID->"1ff38e74-77b9-49cb-9813-96dd898d05d4"],
+
+Cell[BoxData[
+ RowBox[{"testim", "=", 
+  RowBox[{"Import", "[", 
+   RowBox[{"names2", "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "]"}]}]], "Input",
+ CellLabel->"In[96]:=",ExpressionUUID->"d859c03a-2cfe-4980-adf5-e436161a7867"],
+
+Cell[BoxData[
+ RowBox[{"height", "=", 
+  RowBox[{
+   RowBox[{"ImageMeasurements", "[", 
+    RowBox[{"testim", ",", "\"\<Dimensions\>\""}], "]"}], "[", 
+   RowBox[{"[", "1", "]"}], "]"}]}]], "Input",
+ CellLabel->"In[97]:=",ExpressionUUID->"2c6d6edf-003f-4d33-a908-5280c14b433f"],
+
+Cell[BoxData[
+ RowBox[{"width", "=", 
+  RowBox[{
+   RowBox[{"ImageMeasurements", "[", 
+    RowBox[{"testim", ",", "\"\<Dimensions\>\""}], "]"}], "[", 
+   RowBox[{"[", "2", "]"}], "]"}]}]], "Input",
+ CellLabel->"In[98]:=",ExpressionUUID->"e4f2f070-520a-4159-bc7e-320cf230fe5d"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "testim", "]"}]], "Input",
+ CellLabel->"In[99]:=",ExpressionUUID->"3af298f8-4c57-46ea-b8ec-17bd44a639eb"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"imagelist", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ImageResize", "[", 
+      RowBox[{
+       RowBox[{"Import", "@", "#"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"width", "/", "2"}], ",", 
+         RowBox[{"height", "/", "2"}]}], "}"}], ",", 
+       RowBox[{"Resampling", "\[Rule]", "\"\<Bilinear\>\""}]}], "]"}], "&"}], 
+    "/@", "names2"}]}], ";"}], "\n", 
+ RowBox[{"Export", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\</try2.gif\>\""}], ",",
+    "imagelist", ",", 
+   RowBox[{"\"\<AnimationRepetitions\>\"", "\[Rule]", "\[Infinity]"}], ",", 
+   RowBox[{"\"\<DisplayDurations\>\"", "\[Rule]", ".2"}], ",", 
+   RowBox[{"ImageResolution", "\[Rule]", "200"}]}], "]"}]}], "Input",
+ CellLabel->
+  "In[100]:=",ExpressionUUID->"da6ae41c-4447-4718-acda-90348ca301df"],
+
+Cell[BoxData[
+ RowBox[{"Clear", "[", "imagelist", "]"}]], "Input",
+ CellLabel->
+  "In[102]:=",ExpressionUUID->"a890d61f-aac4-433c-8583-a8498dd4d00f"]
+}, Open  ]]
+},
+WindowSize->{720, 770},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 74, 0, 67, "Section",ExpressionUUID->"b63f2c5c-faa6-4463-a41c-781e12c2262a"],
+Cell[657, 24, 155, 2, 30, "Input",ExpressionUUID->"c8631a4e-4eb1-4dc5-a7c1-868601c2a6ee"],
+Cell[815, 28, 266, 6, 30, "Input",ExpressionUUID->"431fd734-64c5-4ecc-8efb-efefba40484c"],
+Cell[1084, 36, 482, 13, 73, "Input",ExpressionUUID->"5c857032-2711-46d0-899a-7c7a519c21d5"],
+Cell[1569, 51, 538, 13, 73, "Input",ExpressionUUID->"1ff38e74-77b9-49cb-9813-96dd898d05d4"],
+Cell[2110, 66, 225, 5, 30, "Input",ExpressionUUID->"d859c03a-2cfe-4980-adf5-e436161a7867"],
+Cell[2338, 73, 277, 6, 30, "Input",ExpressionUUID->"2c6d6edf-003f-4d33-a908-5280c14b433f"],
+Cell[2618, 81, 276, 6, 30, "Input",ExpressionUUID->"e4f2f070-520a-4159-bc7e-320cf230fe5d"],
+Cell[2897, 89, 142, 2, 30, "Input",ExpressionUUID->"3af298f8-4c57-46ea-b8ec-17bd44a639eb"],
+Cell[3042, 93, 867, 23, 115, "Input",ExpressionUUID->"da6ae41c-4447-4718-acda-90348ca301df"],
+Cell[3912, 118, 149, 3, 30, "Input",ExpressionUUID->"a890d61f-aac4-433c-8583-a8498dd4d00f"]
+}, Open  ]]
+}
+]
+*)
+
