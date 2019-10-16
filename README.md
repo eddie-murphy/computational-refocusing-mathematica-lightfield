@@ -8,6 +8,6 @@ Mathematica program that refocuses scenes that have been captured by light field
 * pdf printouts which lack the gif animations are included.
 * the .gif and .png files located in the root directory are used in the main.nb notebook but can also be viewed themselves
 * Inside **Scene_at_different_focal_lengths** are folders for each scene which contain:  
-  * the notebook code that was used to take the images from the SLF Archive and compute the scene at different focal lengths (this code is also located in **main.nb** 
+  * the notebook code that was used to take the images from the SLF Archive and compute the scene at different focal lengths (this code is also located in **main.nb**)
   * and a notebook which created the gif from the images of the scene at different focal lengths
 
